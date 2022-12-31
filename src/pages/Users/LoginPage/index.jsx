@@ -10,11 +10,11 @@ const UserLoginPage = () => {
     const hadleLogin = async () => {
         console.log(email);
         console.log(password)
-        login(email, password)
+        await login(email, password)
     }
 
     if(authenticated)
-    return <Navigate to="/adminHome" />
+    return <Navigate to="/userHome" />
 
     return (
         <div id="login">

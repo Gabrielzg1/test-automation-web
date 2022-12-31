@@ -55,22 +55,17 @@ const AppRoutes = () => {
    }
     return (
     <Router>
-        <Routes>
-            <Route exact path = "/" element = {<MainPage/>}/>
-        </Routes>
         <AuthProvider>
-            <Routes>
-                <Route exact path = "/adminLogin" element = {<AdminLoginPage/>}/>
-                <Route exact path = "/adminHome" element = {<PrivateAdmin><AdminMainPage/></PrivateAdmin>}/>
-            </Routes>
-        </AuthProvider>
         <AuthProviderUser>
             <Routes>
+                <Route exact path = "/" element = {<MainPage/>}/>
+                <Route exact path = "/adminLogin" element = {<AdminLoginPage/>}/>
+                <Route exact path = "/adminHome" element = {<PrivateAdmin><AdminMainPage/></PrivateAdmin>}/>
                 <Route exact path = "/userLogin" element = {<UserLoginPage/>}/>
                 <Route exact path = "/userHome" element = {<PrivateUser><UserMainPage/></PrivateUser>}/>
             </Routes>
         </AuthProviderUser>
-        
-    </Router>)
-}
+        </AuthProvider>
+    </Router>
+)}
 export default AppRoutes
