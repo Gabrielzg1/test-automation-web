@@ -11,3 +11,8 @@ export const createAdminSession = async (email, password) => {
 export const createUserSession = async (email, password) => {
   return api.post("/userSession", { email, password });
 };
+
+export const getSubjects = async (adminId) => {
+  let url = `/admin/${adminId}`;
+  return api.get(url);
+};

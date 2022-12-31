@@ -33,7 +33,6 @@ const AppRoutes = () => {
             )
         }
         if(!authenticated){
-            console.log(authenticated);
             return <Navigate to="/adminLogin" />
         }
         return children;

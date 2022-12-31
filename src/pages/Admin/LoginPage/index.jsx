@@ -1,9 +1,10 @@
 import React, { useState, useContext } from "react";
 import "./styles.css"
 import { AuthContext } from "../../../contexts/Admin/auth";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 const AdminLoginPage = () => {
+    const {state} = useLocation();
     const {authenticated, login} = useContext(AuthContext)
     const [email, setEmail] = useState(' ');
     const [password, setPassword] = useState(' ');
