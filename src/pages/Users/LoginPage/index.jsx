@@ -1,10 +1,10 @@
 import React, { useState, useContext } from "react";
 import "./styles.css"
-import { AuthContext } from "../../../contexts/Admin/auth";
+import { AuthContextUser } from "../../../contexts/User/auth";
 import { Navigate } from "react-router-dom";
 
-const AdminLoginPage = () => {
-    const {authenticated, login} = useContext(AuthContext)
+const UserLoginPage = () => {
+    const {authenticated, login} = useContext(AuthContextUser)
     const [email, setEmail] = useState(' ');
     const [password, setPassword] = useState(' ');
     const hadleLogin = async () => {
@@ -47,4 +47,4 @@ const AdminLoginPage = () => {
         </div>
     )
 }
-export default AdminLoginPage
+export default UserLoginPage

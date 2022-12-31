@@ -1,15 +1,19 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, {useContext } from "react";
 import { AuthContext } from "../../../contexts/Admin/auth";
+import { Navigate } from "react-router-dom";
 
-const MainPage = () => {
+const AdminMainPage = () => {
+    const {authenticated, admin} = useContext(AuthContext)
    
-    const { user, logout } = useContext(AuthContext)
+
+    if(!authenticated)
+    return <Navigate to="/adminLogin" />
 
     return (<div> <h1>  Main Page</h1>
-        <h2>{user.email}</h2></div>
+        <h2>{admin.id}</h2></div>
        
     )
 }
 
 
-export default MainPage
+export default AdminMainPage

@@ -5,33 +5,36 @@ export const AuthContext = createContext()
 
 export const AuthProvider = ({children}) => {
     const navigate = useNavigate('')
-    const [user, setUser] = useState(null);
+    const [admin, setAdmin] = useState(null);
     const [loading, setLoading] = useState(true);
     
     useEffect(() => {
-       const user = localStorage.getItem('user')
+
+       const admin = localStorage.getItem('admin')
        const token = localStorage.getItem('token')
 
-       if(user && token){
-            setUser(JSON.parse(user))
+       if(admin && token){
+            setAdmin(JSON.parse(admin))
             api.defaults.headers.Authorization = `Bearer ${token}`
        }
     }, []) 
 
     const login = async (email, password) => {
+        setLoading(true)
        const response = await createAdminSession(email, password);
-       localStorage.setItem('user', JSON.stringify(response.data.user))
+       localStorage.setItem('admin', JSON.stringify(response.data.admin))
        localStorage.setItem('token', response.data.token)
 
        api.defaults.headers.Authorization = `Bearer ${response.data.token}`
-       setUser(response.data.user)
+       setAdmin(response.data.admin)
+       setLoading(false)
        navigate('/adminHome')
     }
     const logout = () => {
-        localStorage.removeItem("user")
+        localStorage.removeItem("admin")
         localStorage.removeItem('token')
         api.defaults.headers.Authorization = null
-        setUser(null)
+        setAdmin(null)
         navigate('/adminLogin')
 
     }
@@ -39,8 +42,8 @@ export const AuthProvider = ({children}) => {
     return(
         <AuthContext.Provider
             value={{
-                authenticated: Boolean(user),
-                user,
+                authenticated: Boolean(admin),
+                admin,
                 loading,
                 login,
                 logout

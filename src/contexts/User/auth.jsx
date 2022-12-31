@@ -1,11 +1,11 @@
 import React, { createContext, useState, useEffect} from "react";
-import { createSession, api } from "../../services/api";
+import {api, createUserSession } from "../../services/api";
 import { useNavigate } from "react-router-dom";
 
 
-export const AuthContext = createContext()
+export const AuthContextUser = createContext()
 
-export const AuthProvider = ({children}) => {
+export const AuthProviderUser = ({children}) => {
     const navigate = useNavigate('/login')
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -20,12 +20,14 @@ export const AuthProvider = ({children}) => {
        }
     }, []) 
     const login = async (email, password) => {
-       const response = await createSession(email, password);
+        setLoading(true)
+       const response = await createUserSession(email, password);
        localStorage.setItem('user', JSON.stringify(response.data.user))
        localStorage.setItem('token', response.data.token)
 
        api.defaults.headers.Authorization = `Bearer ${response.data.token}`
        setUser(response.data.user)
+       setLoading(false)
        navigate('/')
     }
     const logout = () => {
@@ -38,7 +40,7 @@ export const AuthProvider = ({children}) => {
     }
     
     return(
-        <AuthContext.Provider
+        <AuthContextUser.Provider
             value={{
                 authenticated: !!user,
                 user,
@@ -48,6 +50,6 @@ export const AuthProvider = ({children}) => {
     
             }}
     > {children}
-    </AuthContext.Provider>
+    </AuthContextUser.Provider>
     )
 }
