@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export const AuthContextUser = createContext()
 
 export const AuthProviderUser = ({children}) => {
-    const navigate = useNavigate('/userLogin')
+    const navigate = useNavigate('/user/login')
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     useEffect(() => {
@@ -28,14 +28,14 @@ export const AuthProviderUser = ({children}) => {
        api.defaults.headers.Authorization = `Bearer ${response.data.token}`
        setUser(response.data.user)
        setLoading(false)
-       navigate('/userHome')
+       navigate('/user/home')
     }
     const logout = () => {
         localStorage.removeItem("user")
         localStorage.removeItem('token')
         api.defaults.headers.Authorization = null
         setUser(null)
-        navigate('/userLogin')
+        navigate('/user/login')
 
     }
     
@@ -48,8 +48,8 @@ export const AuthProviderUser = ({children}) => {
                 login,
                 logout
     
-            }}
-    > {children}
-    </AuthContextUser.Provider>
+            }}> 
+            {children}
+        </AuthContextUser.Provider>
     )
 }

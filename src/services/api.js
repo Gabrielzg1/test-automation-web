@@ -12,7 +12,11 @@ export const createUserSession = async (email, password) => {
   return api.post("/userSession", { email, password });
 };
 
-export const getSubjects = async (adminId) => {
+export const getAdmin = async (adminId) => {
   let url = `/admin/${adminId}`;
+  return api.get(url);
+};
+export const getSubjects = async (adminId) => {
+  let url = `/admin/${adminId}/subjects`;
   return api.get(url);
 };

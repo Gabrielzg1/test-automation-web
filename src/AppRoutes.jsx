@@ -20,6 +20,7 @@ import UserLoginPage from "./pages/Users/LoginPage";
 import UserMainPage from "./pages/Users/MainPage";
 
 import MainPage from "./pages/Main";
+import AdminSubjectPage from "./pages/Admin/SubjectPage";
 
 const AppRoutes = () => {
 
@@ -33,7 +34,7 @@ const AppRoutes = () => {
             )
         }
         if(!authenticated){
-            return <Navigate to="/adminLogin" />
+            return <Navigate to="/admin/login" />
         }
         return children;
     }
@@ -48,7 +49,7 @@ const AppRoutes = () => {
        }
        if(!authenticated){
            console.log(authenticated);
-           return <Navigate to="/userLogin" />
+           return <Navigate to="/user/login" />
        }
        return children;
    }
@@ -58,10 +59,14 @@ const AppRoutes = () => {
         <AuthProviderUser>
             <Routes>
                 <Route exact path = "/" element = {<MainPage/>}/>
-                <Route exact path = "/adminLogin" element = {<AdminLoginPage/>}/>
-                <Route exact path = "/adminHome" element = {<PrivateAdmin><AdminMainPage/></PrivateAdmin>}/>
-                <Route exact path = "/userLogin" element = {<UserLoginPage/>}/>
-                <Route exact path = "/userHome" element = {<PrivateUser><UserMainPage/></PrivateUser>}/>
+
+                <Route exact path = "/admin/login" element = {<AdminLoginPage/>}/>
+                <Route exact path = "/admin/home" element = {<PrivateAdmin><AdminMainPage/></PrivateAdmin>}/>
+                <Route exact path = "/admin/subject" element = {<PrivateAdmin><AdminSubjectPage/></PrivateAdmin>}/>
+
+
+                <Route exact path = "/user/login" element = {<UserLoginPage/>}/>
+                <Route exact path = "/user/home" element = {<PrivateUser><UserMainPage/></PrivateUser>}/>
             </Routes>
         </AuthProviderUser>
         </AuthProvider>

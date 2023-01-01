@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export const AuthContext = createContext()
 
 export const AuthProvider = ({children}) => {
-    const navigate = useNavigate('/adminLogin')
+    const navigate = useNavigate('/admin/login')
     const [admin, setAdmin] = useState(null);
     const [loading, setLoading] = useState(true);
     
@@ -23,21 +23,21 @@ export const AuthProvider = ({children}) => {
 
     const login = async (email, password) => {
         setLoading(true)
-       const response = await createAdminSession(email, password);
-       localStorage.setItem('admin', JSON.stringify(response.data.admin))
-       localStorage.setItem('Admintoken', response.data.token)
+        const response = await createAdminSession(email, password);
+        localStorage.setItem('admin', JSON.stringify(response.data.admin))
+        localStorage.setItem('Admintoken', response.data.token)
 
-       api.defaults.headers.Authorization = `Bearer ${response.data.token}`
-       setAdmin(response.data.admin)
-       setLoading(false)
-       navigate('/adminHome')
+        api.defaults.headers.Authorization = `Bearer ${response.data.token}`
+        setAdmin(response.data.admin)
+        setLoading(false)
+        navigate('/admin/home')
     }
     const logout = () => {
         localStorage.removeItem("admin")
         localStorage.removeItem('Admintoken')
         api.defaults.headers.Authorization = null
         setAdmin(null)
-        navigate('/adminLogin')
+        navigate('/admin/login')
 
     }
     

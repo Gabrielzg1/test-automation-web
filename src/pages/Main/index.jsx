@@ -6,9 +6,9 @@ const MainPage = () => {
     return (
     <div>
         <h1>Main page</h1>
-        <button onClick={()=>navigate("/userLogin")}>Logar Como Usuário</button>
+        <button onClick={()=>navigate("/user/login")}>Logar Como Usuário</button>
         <br />
-        <button onClick={()=>navigate('/adminLogin')}>Logar Como Admin</button>
+        <button onClick={()=>navigate('/admin/login')}>Logar Como Admin</button>
 
     </div>
   

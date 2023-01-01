@@ -1,22 +1,27 @@
 import React, {useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../../contexts/Admin/auth";
-import { Navigate, Link } from "react-router-dom";
-import { getSubjects } from "../../../services/api";
+import { Navigate, Link, useNavigate } from "react-router-dom";
+import { getAdmin, getSubjects } from "../../../services/api";
+import Nav from "./Nav";
+import './styles.css'
+import Subjects from "./Subjects";
+
 
 const AdminMainPage = () => {
     const [subjects, setSubjects] = useState([]);
     const [loading, setLoading] = useState(true);
     const [loadingError, setLoadingError] = useState(false);
-    const [name, setName] = useState('teste')
+    const [name, setName] = useState()
+    const navigate = useNavigate()
 
-    const {authenticated, admin} = useContext(AuthContext)
+    const {authenticated, logout ,admin} = useContext(AuthContext)
     const loadData = async () => {
         try {
             setLoading(true)
             const response = await getSubjects(admin?.id);
-            setSubjects(response.data.subjects)
-            
-            setName(response.data.username)
+            const responseAdmin = await getAdmin(admin?.id)
+            setSubjects(response.data)
+            setName(responseAdmin.data.username)
             setLoading(false)
         } catch (err) {
             console.error(err)
@@ -45,25 +50,15 @@ const AdminMainPage = () => {
         )
     }
 
-    return (
-    <div> 
-        <h1>  Olá, {name} </h1>
-       <h2>Subjects: </h2>
-        
-        {
-                subjects.map((subject) => (
-                    <button className="item"  key={subject._id}>
-                    <div className="info">
-                        <div className="owner">
-                            {subject}
-                        </div>
-                       
-                    </div>
-                    
-                </button>
-                ))
-            }
+    const handleLogout = () => {
+        console.log('logout')
+        logout();
+    }
 
+    return (
+    <div id="main"> 
+        <Nav onLogout={handleLogout} name = {name}/>
+        <Subjects subjects_ = {subjects}/>
     </div>
        
     )
