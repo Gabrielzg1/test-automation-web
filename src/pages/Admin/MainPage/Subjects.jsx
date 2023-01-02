@@ -12,8 +12,7 @@ const Subjects = ({ subjects_ }) => {
                     <button className="item"  
                             key={subject._id} 
                             onClick={() => {
-                                console.log(subject._id)
-                                navigate("/admin/subject", {state: { subject: subject.name }})
+                                navigate("/admin/subject", {state: { subject_id: subject._id, subject_name: subject.name }})
                             }}>
                     <div className="info">
                         <div className="subject">

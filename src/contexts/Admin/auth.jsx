@@ -29,6 +29,7 @@ export const AuthProvider = ({children}) => {
 
         api.defaults.headers.Authorization = `Bearer ${response.data.token}`
         setAdmin(response.data.admin)
+        console.log(admin)
         setLoading(false)
         navigate('/admin/home')
     }

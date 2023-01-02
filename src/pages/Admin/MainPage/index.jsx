@@ -2,7 +2,7 @@ import React, {useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../../contexts/Admin/auth";
 import { Navigate, Link, useNavigate } from "react-router-dom";
 import { getAdmin, getSubjects } from "../../../services/api";
-import Nav from "./Nav";
+import Nav from "../../Components/Nav";
 import './styles.css'
 import Subjects from "./Subjects";
 
@@ -12,7 +12,6 @@ const AdminMainPage = () => {
     const [loading, setLoading] = useState(true);
     const [loadingError, setLoadingError] = useState(false);
     const [name, setName] = useState()
-    const navigate = useNavigate()
 
     const {authenticated, logout ,admin} = useContext(AuthContext)
     const loadData = async () => {
@@ -57,7 +56,7 @@ const AdminMainPage = () => {
 
     return (
     <div id="main"> 
-        <Nav onLogout={handleLogout} name = {name}/>
+        <Nav onLogout={handleLogout} admin = {admin}/>
         <Subjects subjects_ = {subjects}/>
     </div>
        

@@ -22,6 +22,8 @@ import UserMainPage from "./pages/Users/MainPage";
 import MainPage from "./pages/Main";
 import AdminSubjectPage from "./pages/Admin/SubjectPage";
 
+import TaskPage from "./pages/Admin/TaskPage";
+
 const AppRoutes = () => {
 
     const PrivateAdmin = ({children}) => {
@@ -63,6 +65,11 @@ const AppRoutes = () => {
                 <Route exact path = "/admin/login" element = {<AdminLoginPage/>}/>
                 <Route exact path = "/admin/home" element = {<PrivateAdmin><AdminMainPage/></PrivateAdmin>}/>
                 <Route exact path = "/admin/subject" element = {<PrivateAdmin><AdminSubjectPage/></PrivateAdmin>}/>
+
+                <Route exact path = "/subject/task" element = {<PrivateAdmin><TaskPage/></PrivateAdmin>}/>
+
+
+                
 
 
                 <Route exact path = "/user/login" element = {<UserLoginPage/>}/>
