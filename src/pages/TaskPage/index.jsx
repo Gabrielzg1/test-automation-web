@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { AuthContext } from "../../../contexts/Admin/auth";
-import { getTask } from "../../../services/api";
-import Nav from "../../Components/Nav";
+import { AuthContext } from "../../contexts/Admin/auth";
+import { getTask } from "../../services/api";
+import Nav from "../Components/Nav";
 import "./styles.css";
 
 const TaskPage = () => {
@@ -130,7 +130,7 @@ const TaskPage = () => {
 					</a>
 					Código Base
 				</h2>
-				<p>Siga está formatação para a valida</p>
+				<p>Siga está formatação para a validar</p>
 				<pre>
 					<code>{baseCode}</code>
 				</pre>

@@ -12,8 +12,8 @@ export const createUserSession = async (email, password) => {
 	return api.post("/userSession", { email, password });
 };
 
-export const getAdmin = async (adminId) => {
-	let url = `/admin/${adminId}`;
+export const get = async (adminId, type) => {
+	let url = `/${type}/${adminId}`;
 	return api.get(url);
 };
 export const getSubjects = async (adminId) => {

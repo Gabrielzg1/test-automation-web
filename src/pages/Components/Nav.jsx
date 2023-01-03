@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { getAdmin } from "../../services/api";
+import { get } from "../../services/api";
 
-const Nav = ({ onLogout, admin }) => {
+const Nav = ({ onLogout, navName, type }) => {
 	const [name, setname] = useState("");
 
 	const loadData = async () => {
 		try {
-			const response = await getAdmin(admin?.id);
+			const response = await get(navName?.id, type);
 			setname(response.data.username);
+			console.log(name);
 		} catch (err) {
 			console.error(err);
 		}
