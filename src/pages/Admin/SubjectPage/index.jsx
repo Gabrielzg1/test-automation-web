@@ -1,12 +1,13 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../../contexts/Admin/auth";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { getTasks } from "../../../services/api";
 import Tasks from "./Tasks";
 import Nav from "../../Components/Nav";
 import "./styles.css";
 
 const AdminSubjectPage = () => {
+	const navigate = useNavigate("/admin/home");
 	const [tasks, setTasks] = useState([]);
 	const { state } = useLocation();
 	const [loading, setLoading] = useState(true);
@@ -31,10 +32,13 @@ const AdminSubjectPage = () => {
 
 	return (
 		<div id="main">
-			<Nav admin={admin} onLogout={logout} />
-
+			<Nav navName={admin} onLogout={logout} type="admin" />
 			<h1>{subject_name} Page</h1>
-
+			<button
+				onClick={() => {
+					navigate("/admin/subject/createTask", { state: { subject_id } });
+				}}
+			></button>
 			<Tasks tasks_={tasks} subjectId={subject_id} />
 		</div>
 	);

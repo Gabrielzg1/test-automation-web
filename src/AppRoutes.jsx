@@ -17,6 +17,7 @@ import MainPage from "./pages/Main";
 import AdminSubjectPage from "./pages/Admin/SubjectPage";
 
 import TaskPage from "./pages/TaskPage";
+import CreateTaskPage from "./pages/Admin/CreateTaskPage";
 
 const AppRoutes = () => {
 	const PrivateAdmin = ({ children }) => {
@@ -73,6 +74,15 @@ const AppRoutes = () => {
 							element={
 								<PrivateAdmin>
 									<TaskPage />
+								</PrivateAdmin>
+							}
+						/>
+						<Route
+							exact
+							path="/admin/subject/createTask"
+							element={
+								<PrivateAdmin>
+									<CreateTaskPage />
 								</PrivateAdmin>
 							}
 						/>

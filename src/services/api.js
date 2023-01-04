@@ -37,3 +37,19 @@ export const updateOutputs = async (subjectId, taskId) => {
 	let url = `/subjects/${subjectId}/tasks/${taskId}`;
 	return api.put(url);
 };
+export const createTask = async (
+	subjectId,
+	name,
+	description,
+	inputs,
+	baseCode,
+	tips
+) => {
+	return api.post(`/subjects/${subjectId}/tasks`, {
+		name,
+		description,
+		inputs,
+		baseCode,
+		tips,
+	});
+};

@@ -8,7 +8,6 @@ const Nav = ({ onLogout, navName, type }) => {
 		try {
 			const response = await get(navName?.id, type);
 			setname(response.data.username);
-			console.log(name);
 		} catch (err) {
 			console.error(err);
 		}
