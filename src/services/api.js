@@ -30,6 +30,10 @@ export const getTask = async (subjectId, taskId) => {
 	return api.get(url);
 };
 export const getOutputs = async (subjectId, taskId) => {
+	let url = `/subjects/${subjectId}/tasks/${taskId}/generateOutputs`;
+	return api.put(url);
+};
+export const updateOutputs = async (subjectId, taskId) => {
 	let url = `/subjects/${subjectId}/tasks/${taskId}`;
 	return api.put(url);
 };

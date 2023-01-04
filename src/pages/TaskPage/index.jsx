@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { AuthContext } from "../../contexts/Admin/auth";
-import { getOutputs, getTask } from "../../services/api";
+import { getOutputs, getTask, updateOutputs } from "../../services/api";
 import Nav from "../Components/Nav";
 import "./styles.css";
 
@@ -17,7 +17,8 @@ const TaskPage = () => {
 	const [output, setOutput] = useState([]);
 
 	const handleTask = async () => {
-		getOutputs();
+		await getOutputs(subject_id, task_id);
+		await updateOutputs(subject_id, task_id);
 		const response = await getTask(subject_id, task_id);
 		setdescription(response.data.description);
 		setInputs(response.data.inputs);
@@ -39,7 +40,6 @@ const TaskPage = () => {
 
 	return (
 		<div id="main">
-			<Nav admin={admin} onLogout={logout} />
 			<article className="markdown-body">
 				<h2>
 					<a
