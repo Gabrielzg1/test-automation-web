@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { AuthContext } from "../../contexts/Admin/auth";
-import { getTask } from "../../services/api";
+import { getOutputs, getTask } from "../../services/api";
 import Nav from "../Components/Nav";
 import "./styles.css";
 
@@ -14,13 +14,16 @@ const TaskPage = () => {
 	const [inputs, setInputs] = useState([]);
 	const [tips, setTips] = useState([]);
 	const [baseCode, setBaseCode] = useState("");
+	const [output, setOutput] = useState([]);
 
 	const handleTask = async () => {
+		getOutputs();
 		const response = await getTask(subject_id, task_id);
 		setdescription(response.data.description);
 		setInputs(response.data.inputs);
 		setTips(response.data.tips);
 		setBaseCode(response.data.baseCode);
+		setOutput(response.data.outputs);
 	};
 
 	const loadData = async () => {
@@ -66,10 +69,7 @@ const TaskPage = () => {
 					<a>Saída</a>
 				</p>
 				<pre>
-					<code>
-						Primeiro número: 01 Terceiro número: 03 Quarto número: 40 Sexto
-						número: 42 Lista de possíveis apostas: 01 - 02 - 03 - 40 - 41 - 42
-					</code>
+					<code>{output[0]}</code>
 				</pre>
 				<h3>
 					<a id="user-content-teste-02" className="anchor" aria-hidden="true">
@@ -87,11 +87,7 @@ const TaskPage = () => {
 					<a>Saída</a>
 				</p>
 				<pre>
-					<code>
-						Primeiro número: 08 Terceiro número: 12 Quarto número: 35 Sexto
-						número: 39 Lista de possíveis apostas: 08 - 09 - 12 - 35 - 36 - 39
-						08 - 09 - 12 - 35 - 38 - 39 08 - 11 - 12 - 35 - 36 - 39
-					</code>
+					<code>{output[1]}</code>
 				</pre>
 				<h3>
 					<a id="user-content-teste-03" className="anchor" aria-hidden="true">
@@ -109,16 +105,7 @@ const TaskPage = () => {
 					<a>Saída</a>
 				</p>
 				<pre>
-					<code>
-						Primeiro número: 15 Terceiro número: 25 Quarto número: 40 Sexto
-						número: 48 Lista de possíveis apostas: 15 - 16 - 25 - 40 - 41 - 48
-						15 - 16 - 25 - 40 - 43 - 48 15 - 16 - 25 - 40 - 47 - 48 15 - 18 - 25
-						- 40 - 41 - 48 15 - 18 - 25 - 40 - 45 - 48 15 - 18 - 25 - 40 - 47 -
-						48 15 - 20 - 25 - 40 - 43 - 48 15 - 20 - 25 - 40 - 45 - 48 15 - 22 -
-						25 - 40 - 41 - 48 15 - 22 - 25 - 40 - 43 - 48 15 - 22 - 25 - 40 - 47
-						- 48 15 - 24 - 25 - 40 - 41 - 48 15 - 24 - 25 - 40 - 45 - 48 15 - 24
-						- 25 - 40 - 47 - 48
-					</code>
+					<code>{output[2]}</code>
 				</pre>
 				<h2>
 					<a
