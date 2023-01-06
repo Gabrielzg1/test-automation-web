@@ -43,13 +43,21 @@ export const createTask = async (
 	description,
 	inputs,
 	baseCode,
-	tips
+	formData,
+	subject_name
 ) => {
 	return api.post(`/subjects/${subjectId}/tasks`, {
 		name,
 		description,
 		inputs,
 		baseCode,
-		tips,
+		formData,
+		subject_name
+
 	});
 };
+
+export const sendFile = async (formData) => {
+	return api.post('/files', formData)
+
+}

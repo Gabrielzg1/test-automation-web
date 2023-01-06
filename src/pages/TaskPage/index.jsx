@@ -12,7 +12,6 @@ const TaskPage = () => {
 
 	const [description, setdescription] = useState("");
 	const [inputs, setInputs] = useState([]);
-	const [tips, setTips] = useState([]);
 	const [baseCode, setBaseCode] = useState("");
 	const [output, setOutput] = useState([]);
 
@@ -22,7 +21,6 @@ const TaskPage = () => {
 		const response = await getTask(subject_id, task_id);
 		setdescription(response.data.description);
 		setInputs(response.data.inputs);
-		setTips(response.data.tips);
 		setBaseCode(response.data.baseCode);
 		setOutput(response.data.outputs);
 	};
@@ -132,10 +130,9 @@ const TaskPage = () => {
 					Orientações
 				</h2>
 				<ul>
-					<li>{tips[0]}</li>
-					<li>{tips[1]}</li>
-					<li>{tips[2]}</li>
-					<li>{tips[3]}</li>
+					<li>O laboratório é composto de 5 testes abertos e 5 testes fechados.</li>
+					<li>O limite máximo será de 5 submissões.</li>
+					<li>Serão considerados apenas os resultados da última submissão.</li>
 				</ul>
 			</article>
 		</div>

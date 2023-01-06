@@ -36,9 +36,9 @@ const AdminSubjectPage = () => {
 			<h1>{subject_name} Page</h1>
 			<button
 				onClick={() => {
-					navigate("/admin/subject/createTask", { state: { subject_id } });
+					navigate("/admin/subject/createTask", { state: { subject_id, subject_name } });
 				}}
-			></button>
+			>Criar nova task</button>
 			<Tasks tasks_={tasks} subjectId={subject_id} />
 		</div>
 	);
