@@ -1,7 +1,8 @@
 import React, { useState, useContext } from "react";
-import "./styles.css";
+import styles from "./mystyle.module.css"
 import { AuthContextUser } from "../../../contexts/User/auth";
 import { Navigate } from "react-router-dom";
+
 
 const UserLoginPage = () => {
 	const { authenticated, login } = useContext(AuthContextUser);
@@ -16,35 +17,53 @@ const UserLoginPage = () => {
 	if (authenticated) return <Navigate to="/user/home" />;
 
 	return (
-		<div id="login">
-			<h1 className="title">Login</h1>
-			<div className="form">
-				<div className="field">
-					<label htmlFor="email">Email:</label>
-					<input
-						type="email"
-						name="email"
-						id="email"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-					/>
+		<div className={styles.body}>
+			<nav className={styles.nav}>
+				<div className={styles.container}>
+					<h2 className={styles.Logo}>Nome <span>Logo</span></h2>
 				</div>
-				<div className="field">
-					<label htmlFor="password">Password:</label>
-					<input
-						type="password"
-						name="password"
-						id="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-					/>
-				</div>
+			</nav>
+			<div className={styles.login}>
+				<h1 className={styles.title}>Login</h1>
+				<div className={styles.form}>
 
-				<div className="actions">
-					<button onClick={hadleLogin}>Entrar</button>
+					<div className={styles.field}>
+						<input
+							type="email"
+							name="email"
+							id="email"
+							placeholder="Email"
+							className={styles.caixa}
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+						/>
+					</div>
+
+					<br />
+
+					<div className={styles.field}>
+						<input
+							className={styles.caixa2}
+							type="password"
+							name="password"
+							id="password"
+							placeholder="Password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+					</div>
+
+
+					<div className={styles.field}>
+						<button className={styles.button} onClick={hadleLogin}>Entrar</button>
+					</div>
 				</div>
 			</div>
 		</div>
+
+
 	);
 };
+
+
 export default UserLoginPage;
