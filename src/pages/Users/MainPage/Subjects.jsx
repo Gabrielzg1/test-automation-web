@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { getSubjectsUser } from "../../../services/api";
 
 const Subjects = ({ subjects_ }) => {
+	const [subjects, setSubjects] = useState([]);
 	const navigate = useNavigate();
+
+
+
 	return (
 		<div className="subjects">
 			<h2>Subjects: </h2>

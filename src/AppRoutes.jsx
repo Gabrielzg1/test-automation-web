@@ -12,6 +12,7 @@ import AdminMainPage from "./pages/Admin/MainPage";
 
 import UserLoginPage from "./pages/Users/LoginPage";
 import UserMainPage from "./pages/Users/MainPage";
+import UserSubjectPage from "./pages/Users/SubjectPage";
 
 import MainPage from "./pages/Main";
 import AdminSubjectPage from "./pages/Admin/SubjectPage";
@@ -94,6 +95,15 @@ const AppRoutes = () => {
 							element={
 								<PrivateUser>
 									<UserMainPage />
+								</PrivateUser>
+							}
+						/>
+						<Route
+							exact
+							path="/user/subject"
+							element={
+								<PrivateUser>
+									<UserSubjectPage />
 								</PrivateUser>
 							}
 						/>
