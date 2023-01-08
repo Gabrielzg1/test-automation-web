@@ -13,6 +13,7 @@ import AdminMainPage from "./pages/Admin/MainPage";
 import UserLoginPage from "./pages/Users/LoginPage";
 import UserMainPage from "./pages/Users/MainPage";
 import UserSubjectPage from "./pages/Users/SubjectPage";
+import UserTaskPage from "./pages/Users/UserTaskPage";
 
 import MainPage from "./pages/Main";
 import AdminSubjectPage from "./pages/Admin/SubjectPage";
@@ -107,7 +108,18 @@ const AppRoutes = () => {
 								</PrivateUser>
 							}
 						/>
+						<Route
+							exact
+							path="/user/subject/task"
+							element={
+								<PrivateUser>
+									<UserTaskPage />
+								</PrivateUser>
+							}
+						/>
+
 					</Routes>
+
 				</AuthProviderUser>
 			</AuthProvider>
 		</Router>

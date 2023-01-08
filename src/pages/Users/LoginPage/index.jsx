@@ -8,10 +8,20 @@ const UserLoginPage = () => {
 	const { authenticated, login } = useContext(AuthContextUser);
 	const [email, setEmail] = useState(" ");
 	const [password, setPassword] = useState(" ");
+	const [isLoading, setIsLoading] = useState(false)
+	const [showError, setError] = useState("")
+
 	const hadleLogin = async () => {
-		console.log(email);
-		console.log(password);
-		await login(email, password);
+		try {
+			setError(null)
+			setIsLoading(true)
+			await login(email, password)
+		} catch (error) {
+			console.log(error)
+			setError(error.response.statusText)
+		} finally {
+			setIsLoading(false)
+		}
 	};
 
 	if (authenticated) return <Navigate to="/user/home" />;
@@ -55,8 +65,9 @@ const UserLoginPage = () => {
 
 
 					<div className={styles.field}>
-						<button className={styles.button} onClick={hadleLogin}>Entrar</button>
+						<button className={styles.button} onClick={hadleLogin} disabled={isLoading}>Entrar</button>
 					</div>
+					{showError && <div className={styles.errorField}><span>{showError}</span></div>}
 				</div>
 			</div>
 		</div>

@@ -4,15 +4,29 @@ import styles from "./mystyle.module.css"
 import { AuthContext } from "../../../contexts/Admin/auth";
 import { Navigate } from "react-router-dom";
 
+
 const AdminLoginPage = () => {
     const { authenticated, login } = useContext(AuthContext)
     const [email, setEmail] = useState(' ');
     const [password, setPassword] = useState(' ');
+    const [isLoading, setIsLoading] = useState(false)
+    const [showError, setError] = useState(null)
+
+
     const hadleLogin = async () => {
-        console.log(email);
-        console.log(password)
-        login(email, password)
+        try {
+            setError(null)
+            setIsLoading(true)
+            await login(email, password)
+        } catch (error) {
+            console.log(error.response)
+            setError(error.response.statusText)
+        } finally {
+            setIsLoading(false)
+        }
+
     }
+
 
     if (authenticated)
         return <Navigate to="/admin/home" />
@@ -27,7 +41,6 @@ const AdminLoginPage = () => {
             <div className={styles.login}>
                 <h1 className={styles.title}>Login</h1>
                 <div className={styles.form}>
-
                     <div className={styles.field}>
                         <input
                             type="email"
@@ -50,14 +63,16 @@ const AdminLoginPage = () => {
                             id="password"
                             placeholder="Password"
                             value={password}
+                            disabled={isLoading}
                             onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
 
-
                     <div className={styles.field}>
                         <button className={styles.button} onClick={hadleLogin}>Entrar</button>
                     </div>
+                    {showError && <div className={styles.errorField}><span>{showError}</span></div>}
+
                 </div>
             </div>
         </div>

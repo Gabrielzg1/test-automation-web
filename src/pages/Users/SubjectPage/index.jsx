@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { getTasks } from "../../../services/api";
 import Tasks from "./Tasks";
 import Nav from "../../Components/Nav";
+import Loading from "../../Components/Loading";
 import "./styles.css";
 import { AuthContextUser } from "../../../contexts/User/auth";
 
@@ -30,7 +31,7 @@ const UserSubjectPage = () => {
         (async () => await loadData())();
     }, []);
     if (loading) {
-        return <span>Loading...</span>
+        return <Loading />
     }
 
     return (

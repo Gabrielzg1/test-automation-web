@@ -27,7 +27,7 @@ const UserMainPage = () => {
 			setLoading(true);
 			const response = await get(user?.id, "users");
 			setName(response.data.username);
-			//console.log(response.data.subjects[0]);
+			console.log(response.data);
 			for (let i = 0; i < response.data.subjects.length; i++) {
 				await handleSubjects(response.data.subjects[i])
 			}

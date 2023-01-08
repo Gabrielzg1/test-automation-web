@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { AuthContext } from "../../contexts/Admin/auth";
 import { AuthContextUser } from "../../contexts/User/auth"
 import { getOutputs, getTask, updateOutputs } from "../../services/api";
-import Nav from "../Components/Nav";
+import Loading from "../Components/Loading";
 import "./styles.css";
 
 const TaskPage = () => {
@@ -49,7 +49,7 @@ const TaskPage = () => {
 	}, []);
 
 	if (loading) {
-		return <div><span>Loading...</span></div>
+		return <Loading />
 	}
 
 	return (
@@ -197,6 +197,7 @@ const TaskPage = () => {
 				</ul>
 
 				<div><button>Editar Task</button></div>
+
 			</article>
 		</div>
 	);

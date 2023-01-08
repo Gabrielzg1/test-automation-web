@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { get } from "../../services/api";
+import styles from "./styles/navstyle.module.css"
 
 const Nav = ({ onLogout, navName, type }) => {
 	const [name, setname] = useState("");
@@ -17,9 +18,9 @@ const Nav = ({ onLogout, navName, type }) => {
 	}, []);
 
 	return (
-		<div className="nav">
-			<h1 className="logo">Test Automation - {name}</h1>
-			<button onClick={onLogout}>Sair</button>
+		<div className={styles.nav}>
+			<h1 className={styles.logo}>Test Automation - {name}</h1>
+			<button className={styles.button} onClick={onLogout}>Sair</button>
 		</div>
 	);
 };
