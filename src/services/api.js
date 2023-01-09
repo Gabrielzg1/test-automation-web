@@ -12,8 +12,8 @@ export const createUserSession = async (email, password) => {
 	return api.post("/userSession", { email, password });
 };
 
-export const get = async (adminId, type) => {
-	let url = `/${type}/${adminId}`;
+export const get = async (id, type) => {
+	let url = `/${type}/${id}`;
 	return api.get(url);
 };
 export const getSubjects = async (adminId) => {
@@ -63,4 +63,7 @@ export const sendFile = async (formData) => {
 }
 export const getSubjectsUser = async (name) => {
 	return api.get(`/users/subjects/${name}`)
+}
+export const showSubjects = async (id) => {
+	return api.get(`/users/showSubjects/${id}`)
 }

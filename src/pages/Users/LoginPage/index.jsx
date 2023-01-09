@@ -17,8 +17,16 @@ const UserLoginPage = () => {
 			setIsLoading(true)
 			await login(email, password)
 		} catch (error) {
-			console.log(error)
-			setError(error.response.statusText)
+			console.log(error.code)
+			if (error.code === "ERR_NETWORK") {
+				setError("Servidor temporariamente fora do ar, tente novamente mais tarde")
+				return;
+			}
+			if (error.code === "ERR_BAD_REQUEST") {
+				setError("Email / Senha inválido")
+			}
+			else
+				setError("Algo deu errado, tente novamente")
 		} finally {
 			setIsLoading(false)
 		}

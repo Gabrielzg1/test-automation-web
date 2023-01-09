@@ -1,8 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Navigate, Link } from "react-router-dom";
-import { get, getSubjectsUser } from "../../../services/api";
+import Loading from "../../Components/Loading"
+import { get, getSubjectsUser, showSubjects } from "../../../services/api";
 import Nav from "../../Components/Nav";
-import "./styles.css";
+import styles from "./mainuserstyle.module.css"
 import Subjects from "./Subjects";
 import { AuthContextUser } from "../../../contexts/User/auth";
 
@@ -12,30 +13,21 @@ const UserMainPage = () => {
 	const [loadingError, setLoadingError] = useState(false);
 	const [name, setName] = useState();
 
-
 	const { authenticated, logout, user } = useContext(AuthContextUser);
-	const handleSubjects = async (value) => {
-		const response = await getSubjectsUser(value)
-		console.log(response.data._id)
-		subjects.push(response.data)
-	}
-
-
 
 	const loadData = async () => {
 		try {
 			setLoading(true);
 			const response = await get(user?.id, "users");
 			setName(response.data.username);
-			console.log(response.data);
-			for (let i = 0; i < response.data.subjects.length; i++) {
-				await handleSubjects(response.data.subjects[i])
-			}
-
+			setSubjects(await showSubjects(user.id))
+			console.log(subjects.data);
 			setLoading(false);
 		} catch (err) {
 			console.error(err);
 			setLoadingError(true);
+
+
 		}
 	};
 	useEffect(() => {
@@ -45,25 +37,27 @@ const UserMainPage = () => {
 	if (!authenticated) return <Navigate to="/user/login" />;
 
 	if (loading) {
-		return <div className="loading">Loading...</div>;
+		return <Loading />;
 	}
+
 	if (loadingError) {
 		return (
 			<div className="loading">
-				Loading Error <Link to="/login">Back</Link>
+				Loading Error <Link to="/user/login">Back</Link>
 			</div>
 		);
 	}
 
-	const handleLogout = () => {
-		console.log("logout");
-		logout();
+	const handleLogout = async () => {
+		await logout();
 	};
 
 	return (
 		<div id="main">
 			<Nav onLogout={handleLogout} navName={user} type="users" />
-			<Subjects subjects_={subjects} />
+			<Subjects subjects_={subjects.data} />
+
+
 		</div>
 	);
 };
