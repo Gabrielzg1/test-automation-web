@@ -12,7 +12,6 @@ const Subjects = ({ subjects_ }) => {
 		<div className="subjects">
 			<h2>Subjects: </h2>
 			{subjects_.map((subject) => {
-				console.log(subjects_);
 				return (
 					<button
 						className="item"

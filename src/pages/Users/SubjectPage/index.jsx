@@ -40,7 +40,7 @@ const UserSubjectPage = () => {
 			<h1>
 				Subject: <i>{subject_name}</i>
 			</h1>
-			<Tasks tasks_={tasks} subjectId={subject_id} />
+			<Tasks tasks_={tasks} subjectId={subject_id} subjectName={subject_name} />
 		</div>
 	);
 };

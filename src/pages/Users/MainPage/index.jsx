@@ -21,7 +21,6 @@ const UserMainPage = () => {
 			const response = await get(user?.id, "users");
 			setName(response.data.username);
 			setSubjects(await showSubjects(user.id))
-			console.log(subjects.data);
 			setLoading(false);
 		} catch (err) {
 			console.error(err);

@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const Tasks = ({ tasks_, subjectId }) => {
+const Tasks = ({ tasks_, subjectId, subjectName }) => {
 	const navigate = useNavigate();
 	return (
 		<div className="tasks">
@@ -17,6 +17,7 @@ const Tasks = ({ tasks_, subjectId }) => {
 									task_id: task._id,
 									task_name: task.name,
 									subject_id: subjectId,
+									subject_name: subjectName
 								},
 							});
 						}}

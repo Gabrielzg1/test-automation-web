@@ -4,7 +4,7 @@ import styles from "./styles/errorstyle.module.css"
 
 const Error = ({ status }) => {
     return (
-        <div class={styles.body}>
+        <div className={styles.body}>
             <h1>Error, Recarregue a pagina - error {status}</h1>
         </div>
     );

@@ -1,15 +1,17 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { AuthContextUser } from "../../../contexts/User/auth";
-import { getTask } from "../../../services/api";
+import { getTask, sendUserFile } from "../../../services/api";
 import Loading from "../../Components/Loading";
 import styles from "./taskstyle.module.css";
+
 
 const UserTaskPage = () => {
 	const { user } = useContext(AuthContextUser);
 	const { state } = useLocation();
-	const { task_id, task_name, subject_id } = state;
+	const { task_id, task_name, subject_id, subject_name } = state;
 	const [loading, setLoading] = useState(false);
+	const [file, setFile] = useState("");
 
 	const [description, setdescription] = useState("");
 	const [inputs, setInputs] = useState([]);
@@ -20,6 +22,7 @@ const UserTaskPage = () => {
 		try {
 			setLoading(true);
 			const response = await getTask(subject_id, task_id);
+			console.log(user.id)
 			setdescription(response.data.description);
 			setInputs(response.data.inputs);
 			setBaseCode(response.data.baseCode);
@@ -33,6 +36,22 @@ const UserTaskPage = () => {
 		<Navigate to="/"></Navigate>;
 	}
 
+	const handleFile = async () => {
+		try {
+			const formData = new FormData();
+			formData.append("subject_name", subject_name);
+			formData.append("task_name", task_name);
+			formData.append("id", user.id);
+			formData.append("file", file);
+			console.log(formData);
+			await sendUserFile(formData);
+		} catch (error) {
+			console.log(error)
+		}
+
+	};
+	
+
 	const loadData = async () => {
 		try {
 			handleTask();
@@ -40,6 +59,7 @@ const UserTaskPage = () => {
 			console.error(err);
 		}
 	};
+
 	useEffect(() => {
 		(async () => await loadData())();
 	}, []);
@@ -195,6 +215,22 @@ const UserTaskPage = () => {
 					</a>
 					Send Task
 				</h2>
+				<div className="field">
+					<label htmlFor="description">Envie aqui o arquivo:</label>
+					<br />
+					<input
+						type="file"
+						name="file"
+						id="file"
+						onChange={(e) => {
+							setFile(e.target.files[0]);
+							console.log(file);
+						}}
+					/>
+				</div>
+				<button disabled={!file} onClick={handleFile}>
+					enviar
+				</button>
 			</article>
 		</div>
 	);

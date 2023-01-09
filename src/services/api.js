@@ -59,6 +59,11 @@ export const createTask = async (
 export const sendFile = async (formData) => {
 	return api.post("/files", formData);
 };
+
+export const sendUserFile = async (formData) => {
+	return api.post("/filesUser", formData);
+
+}
 export const getSubjectsUser = async (name) => {
 	return api.get(`/users/subjects/${name}`);
 };

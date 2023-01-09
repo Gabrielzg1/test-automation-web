@@ -38,7 +38,7 @@ const AppRoutes = () => {
 			return <div className="loading">Loading....</div>;
 		}
 		if (!authenticated) {
-			console.log(authenticated);
+			;
 			return <Navigate to="/user/login" />;
 		}
 		return children;
