@@ -52,18 +52,20 @@ export const createTask = async (
 		inputs,
 		baseCode,
 		formData,
-		subject_name
-
+		subject_name,
 	});
 };
 
 export const sendFile = async (formData) => {
-	return api.post('/files', formData)
-
-}
+	return api.post("/files", formData);
+};
 export const getSubjectsUser = async (name) => {
-	return api.get(`/users/subjects/${name}`)
-}
+	return api.get(`/users/subjects/${name}`);
+};
 export const showSubjects = async (id) => {
-	return api.get(`/users/showSubjects/${id}`)
-}
+	return api.get(`/users/showSubjects/${id}`);
+};
+export const deleteTask = (subject_id, id) => {
+	let url = `/subjects/${subject_id}/tasks/${id}`;
+	return api.delete(url);
+};

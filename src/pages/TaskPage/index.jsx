@@ -1,27 +1,41 @@
 import React, { useContext, useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/Admin/auth";
-import { AuthContextUser } from "../../contexts/User/auth"
-import { getOutputs, getTask, updateOutputs } from "../../services/api";
+import { AuthContextUser } from "../../contexts/User/auth";
+import {
+	deleteTask,
+	getOutputs,
+	getTask,
+	updateOutputs,
+} from "../../services/api";
 import Loading from "../Components/Loading";
 import "./styles.css";
 
 const TaskPage = () => {
+	const navigate = useNavigate();
 	const { logout, admin } = useContext(AuthContext);
-	const { user } = useContext(AuthContextUser)
+	const { user } = useContext(AuthContextUser);
 	const { state } = useLocation();
 	const { task_id, task_name, subject_id } = state;
 	const [loading, setLoading] = useState(false);
-
 
 	const [description, setdescription] = useState("");
 	const [inputs, setInputs] = useState([]);
 	const [baseCode, setBaseCode] = useState("");
 	const [output, setOutput] = useState([]);
 
+	const handleDelete = async () => {
+		try {
+			await deleteTask(subject_id, task_id);
+			navigate("/admin/home");
+		} catch (err) {
+			console.log(err);
+		}
+	};
+
 	const handleTask = async () => {
 		try {
-			setLoading(true)
+			setLoading(true);
 			await getOutputs(subject_id, task_id);
 			await updateOutputs(subject_id, task_id);
 			const response = await getTask(subject_id, task_id);
@@ -29,12 +43,10 @@ const TaskPage = () => {
 			setInputs(response.data.inputs);
 			setBaseCode(response.data.baseCode);
 			setOutput(response.data.outputs);
-			setLoading(false)
+			setLoading(false);
 		} catch (error) {
-			console.log(error)
+			console.log(error);
 		}
-
-
 	};
 
 	const loadData = async () => {
@@ -49,28 +61,20 @@ const TaskPage = () => {
 	}, []);
 
 	if (loading) {
-		return <Loading />
+		return <Loading />;
 	}
 
 	return (
 		<div id="main">
 			<article className="markdown-body">
 				<h1>
-					<a
-						id="user-content-números-da-mega-sena"
-						aria-hidden="true"
-					>
+					<a id="user-content-números-da-mega-sena" aria-hidden="true">
 						<span aria-hidden="true" className="octicon octicon-link"></span>
 					</a>
 					{task_name}
 				</h1>
 				<h2>
-					<a
-						id="user-content-código-base"
-
-					>
-
-					</a>
+					<a id="user-content-código-base"></a>
 					Descrição
 				</h2>
 				<p>{description}</p>
@@ -191,13 +195,16 @@ const TaskPage = () => {
 					Orientações
 				</h2>
 				<ul>
-					<li>O laboratório é composto de 5 testes abertos e 5 testes fechados.</li>
+					<li>
+						O laboratório é composto de 5 testes abertos e 5 testes fechados.
+					</li>
 					{/*<li>O limite máximo será de 5 submissões.</li>
 					<li>Serão considerados apenas os resultados da última submissão.</li>*/}
 				</ul>
 
-				<div><button>Editar Task</button></div>
-
+				<div>
+					<button onClick={handleDelete}>Delete Task</button>
+				</div>
 			</article>
 		</div>
 	);

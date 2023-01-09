@@ -1,34 +1,33 @@
 import React, { useState, useContext } from "react";
-import styles from "./mystyle.module.css"
+import styles from "./mystyle.module.css";
 import { AuthContextUser } from "../../../contexts/User/auth";
 import { Navigate } from "react-router-dom";
-
 
 const UserLoginPage = () => {
 	const { authenticated, login } = useContext(AuthContextUser);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
-	const [isLoading, setIsLoading] = useState(false)
-	const [showError, setError] = useState("")
+	const [isLoading, setIsLoading] = useState(false);
+	const [showError, setError] = useState("");
 
 	const hadleLogin = async () => {
 		try {
-			setError(null)
-			setIsLoading(true)
-			await login(email, password)
+			setError(null);
+			setIsLoading(true);
+			await login(email, password);
 		} catch (error) {
-			console.log(error.code)
+			console.log(error.code);
 			if (error.code === "ERR_NETWORK") {
-				setError("Servidor temporariamente fora do ar, tente novamente mais tarde")
+				setError(
+					"Servidor temporariamente fora do ar, tente novamente mais tarde"
+				);
 				return;
 			}
 			if (error.code === "ERR_BAD_REQUEST") {
-				setError("Email / Senha inválido")
-			}
-			else
-				setError("Algo deu errado, tente novamente")
+				setError("Email / Senha inválido");
+			} else setError("Algo deu errado, tente novamente");
 		} finally {
-			setIsLoading(false)
+			setIsLoading(false);
 		}
 	};
 
@@ -38,13 +37,16 @@ const UserLoginPage = () => {
 		<div className={styles.body}>
 			<nav className={styles.nav}>
 				<div className={styles.container}>
-					<h2 className={styles.Logo}>Nome <span>Logo</span></h2>
+					<h2 className={styles.Logo}>
+						<a className={styles.a} href="/">
+							Nome Logo
+						</a>
+					</h2>
 				</div>
 			</nav>
 			<div className={styles.login}>
 				<h1 className={styles.title}>Login</h1>
 				<div className={styles.form}>
-
 					<div className={styles.field}>
 						<input
 							type="email"
@@ -71,18 +73,24 @@ const UserLoginPage = () => {
 						/>
 					</div>
 
-
 					<div className={styles.field}>
-						<button className={styles.button} onClick={hadleLogin} disabled={isLoading}>Entrar</button>
+						<button
+							className={styles.button}
+							onClick={hadleLogin}
+							disabled={isLoading}
+						>
+							Entrar
+						</button>
 					</div>
-					{showError && <div className={styles.errorField}><span>{showError}</span></div>}
+					{showError && (
+						<div className={styles.errorField}>
+							<span>{showError}</span>
+						</div>
+					)}
 				</div>
 			</div>
 		</div>
-
-
 	);
 };
-
 
 export default UserLoginPage;

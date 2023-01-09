@@ -26,6 +26,12 @@
     display: flex;
     margin-left: 150px;
     font-weight: 700;
+    text-align: center;
+
+}
+.a{
+    color: #fff;
+    text-decoration: none;
 
 }
 
