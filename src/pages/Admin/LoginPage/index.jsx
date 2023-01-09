@@ -7,8 +7,8 @@ import { Navigate } from "react-router-dom";
 
 const AdminLoginPage = () => {
     const { authenticated, login } = useContext(AuthContext)
-    const [email, setEmail] = useState(' ');
-    const [password, setPassword] = useState(' ');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false)
     const [showError, setError] = useState(null)
 
