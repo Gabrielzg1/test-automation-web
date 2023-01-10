@@ -74,3 +74,21 @@ export const deleteTask = (subject_id, id) => {
 	let url = `/subjects/${subject_id}/tasks/${id}`;
 	return api.delete(url);
 };
+export const createUserFolder = async (subject_id, task_id, id) => {
+	let url = `/subjects/${subject_id}/tasks/${task_id}/${id}`
+	return api.get(url)
+}
+export const getUserResult = async (user_id, task_id) => {
+	let url = `/user/${user_id}/task/${task_id}/result`
+	return api.get(url)
+
+}
+export const getUsersResult = async (task_id) => {
+	let url = `/task/${task_id}/result`
+	return api.get(url)
+
+}
+export const getUser = async (user_id) => {
+	let url = `user/${user_id}`
+	return api.get(url)
+}

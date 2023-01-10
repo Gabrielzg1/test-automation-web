@@ -9,16 +9,20 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 //importong the pages
 import AdminLoginPage from "./pages/Admin/LoginPage";
 import AdminMainPage from "./pages/Admin/MainPage";
+import AdminTaskPage from "./pages/Admin/TaskPage";
+import AdminResultPage from "./pages/Admin/AdminResultPage";
+
 
 import UserLoginPage from "./pages/Users/LoginPage";
 import UserMainPage from "./pages/Users/MainPage";
 import UserSubjectPage from "./pages/Users/SubjectPage";
 import UserTaskPage from "./pages/Users/UserTaskPage";
+import UserResultPage from "./pages/Users/UserResultPage";
 
 import MainPage from "./pages/Main";
 import AdminSubjectPage from "./pages/Admin/SubjectPage";
 
-import TaskPage from "./pages/TaskPage";
+
 import CreateTaskPage from "./pages/Admin/CreateTaskPage";
 
 const AppRoutes = () => {
@@ -38,7 +42,7 @@ const AppRoutes = () => {
 			return <div className="loading">Loading....</div>;
 		}
 		if (!authenticated) {
-			;
+
 			return <Navigate to="/user/login" />;
 		}
 		return children;
@@ -69,13 +73,22 @@ const AppRoutes = () => {
 								</PrivateAdmin>
 							}
 						/>
+						<Route
+							exact
+							path="/admin/task/result"
+							element={
+								<PrivateAdmin>
+									<AdminResultPage />
+								</PrivateAdmin>
+							}
+						/>
 
 						<Route
 							exact
 							path="/subject/task"
 							element={
 								<PrivateAdmin>
-									<TaskPage />
+									<AdminTaskPage />
 								</PrivateAdmin>
 							}
 						/>
@@ -116,6 +129,14 @@ const AppRoutes = () => {
 									<UserTaskPage />
 								</PrivateUser>
 							}
+						/>
+						<Route
+							exact
+							path="/user/result"
+							element={
+								<PrivateUser>
+									<UserResultPage />
+								</PrivateUser>}
 						/>
 
 					</Routes>

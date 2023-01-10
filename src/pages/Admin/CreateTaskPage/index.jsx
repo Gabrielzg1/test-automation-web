@@ -29,7 +29,7 @@ const CreateTaskPage = () => {
 
 	const hadleNewTask = async () => {
 		try {
-			await handleInputs();
+			handleInputs();
 			await createTask(
 				subject_id,
 				name,

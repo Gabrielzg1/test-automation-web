@@ -1,17 +1,19 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContextUser } from "../../../contexts/User/auth";
-import { getTask, sendUserFile } from "../../../services/api";
+import { createUserFolder, getTask, sendUserFile } from "../../../services/api";
 import Loading from "../../Components/Loading";
 import styles from "./taskstyle.module.css";
 
 
 const UserTaskPage = () => {
+	const navigate = useNavigate()
 	const { user } = useContext(AuthContextUser);
 	const { state } = useLocation();
 	const { task_id, task_name, subject_id, subject_name } = state;
 	const [loading, setLoading] = useState(false);
 	const [file, setFile] = useState("");
+	const [status, setStatus] = useState(0);
 
 	const [description, setdescription] = useState("");
 	const [inputs, setInputs] = useState([]);
@@ -28,6 +30,7 @@ const UserTaskPage = () => {
 			setBaseCode(response.data.baseCode);
 			setOutput(response.data.outputs);
 			setLoading(false);
+
 		} catch (error) {
 			console.log(error);
 		}
@@ -43,14 +46,16 @@ const UserTaskPage = () => {
 			formData.append("task_name", task_name);
 			formData.append("id", user.id);
 			formData.append("file", file);
-			console.log(formData);
-			await sendUserFile(formData);
+			const response = await createUserFolder(subject_id, task_id, user.id)
+			sendUserFile(formData);
+			setStatus(response.status)
+			console.log(response.status)
 		} catch (error) {
 			console.log(error)
+			setStatus(0)
 		}
-
 	};
-	
+
 
 	const loadData = async () => {
 		try {
@@ -228,9 +233,12 @@ const UserTaskPage = () => {
 						}}
 					/>
 				</div>
-				<button disabled={!file} onClick={handleFile}>
-					enviar
+				<button disabled={!file || status === 200} onClick={handleFile}>
+					ENVIAR
 				</button>
+				<button onClick={() => navigate("/user/result", {
+					state: { taskId: task_id }
+				})}>Teste</button>
 			</article>
 		</div>
 	);

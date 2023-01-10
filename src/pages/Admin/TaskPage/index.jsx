@@ -1,17 +1,17 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../contexts/Admin/auth";
-import { AuthContextUser } from "../../contexts/User/auth";
+import { AuthContext } from "../../../contexts/Admin/auth";
+import { AuthContextUser } from "../../../contexts/User/auth";
 import {
 	deleteTask,
 	getOutputs,
 	getTask,
 	updateOutputs,
-} from "../../services/api";
-import Loading from "../Components/Loading";
+} from "../../../services/api";
+import Loading from "../../Components/Loading";
 import "./styles.css";
 
-const TaskPage = () => {
+const AdminTaskPage = () => {
 	const navigate = useNavigate();
 	const { logout, admin } = useContext(AuthContext);
 	const { user } = useContext(AuthContextUser);
@@ -205,9 +205,13 @@ const TaskPage = () => {
 				<div>
 					<button onClick={handleDelete}>Delete Task</button>
 				</div>
+				<div>
+					<button onClick={() => navigate("/admin/task/result", { state: { taskId: task_id } })}>Ver resultados</button>
+				</div>
+
 			</article>
 		</div>
 	);
 };
 
-export default TaskPage;
+export default AdminTaskPage;
