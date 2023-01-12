@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { createTask, sendFile } from "../../../services/api";
 
-import "./styles.css";
+import styles from "./createstyle.module.css";
 
 const CreateTaskPage = () => {
 	const { state } = useLocation();
@@ -111,83 +111,83 @@ const CreateTaskPage = () => {
 
 				<br />
 				<label htmlFor="number">Input 1</label>
-				<input
-					className="input"
+				<textarea
+					className={styles.input}
 					type="text"
 					onChange={(e) => setInput1(e.target.value)}
-				></input>
+				></textarea>
 				<br />
 
 				<label htmlFor="number">Input 2</label>
-				<input
+				<textarea
 					className="input"
 					type="text"
 					onChange={(e) => setInput2(e.target.value)}
-				></input>
+				></textarea>
 				<br />
 
 				<label htmlFor="number">Input 3</label>
-				<input
+				<textarea
 					className="input"
 					type="text"
 					onChange={(e) => setInput3(e.target.value)}
-				></input>
+				></textarea>
 				<br />
 
 				<label htmlFor="number">Input 4</label>
-				<input
+				<textarea
 					className="input"
 					type="text"
 					onChange={(e) => setInput4(e.target.value)}
-				></input>
+				></textarea>
 				<br />
 
 				<label htmlFor="number">Input 5</label>
-				<input
+				<textarea
 					className="input"
 					type="text"
 					onChange={(e) => setInput5(e.target.value)}
-				></input>
+				></textarea>
 				<br />
 
 				<label htmlFor="number">Input 6</label>
-				<input
+				<textarea
 					className="input"
 					type="text"
 					onChange={(e) => setInput6(e.target.value)}
-				></input>
+				></textarea>
 				<br />
 
 				<label htmlFor="number">Input 7</label>
-				<input
+				<textarea
 					className="input"
 					type="text"
 					onChange={(e) => setInput7(e.target.value)}
-				></input>
+				></textarea>
 				<br />
 
 				<label htmlFor="number">Input 8</label>
-				<input
+				<textarea
 					className="input"
 					type="text"
 					onChange={(e) => setInput8(e.target.value)}
-				></input>
+				></textarea>
 				<br />
 
 				<label htmlFor="number">Input 9</label>
-				<input
+				<textarea
 					className="input"
 					type="text"
 					onChange={(e) => setInput9(e.target.value)}
-				></input>
+				></textarea>
 				<br />
 
 				<label htmlFor="number">Input 10</label>
-				<input
+				<textarea
 					className="inputs"
 					type="text"
 					onChange={(e) => setInput10(e.target.value)}
-				></input>
+				></textarea>
 				<br />
 				<br />
 				<div className="field">
