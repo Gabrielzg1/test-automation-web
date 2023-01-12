@@ -81,7 +81,7 @@ const CreateTaskPage = () => {
 	}, []);
 
 	return (
-		<div id="create">
+		<div id={styles.body_taskcreate}>
 			<h1 className="title">Create Task</h1>
 			<div className="form">
 				<div className="field">
