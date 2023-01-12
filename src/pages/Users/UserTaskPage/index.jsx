@@ -5,9 +5,8 @@ import { createUserFolder, getTask, sendUserFile } from "../../../services/api";
 import Loading from "../../Components/Loading";
 import styles from "./taskstyle.module.css";
 
-
 const UserTaskPage = () => {
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 	const { user } = useContext(AuthContextUser);
 	const { state } = useLocation();
 	const { task_id, task_name, subject_id, subject_name } = state;
@@ -24,13 +23,12 @@ const UserTaskPage = () => {
 		try {
 			setLoading(true);
 			const response = await getTask(subject_id, task_id);
-			console.log(user.id)
+			console.log(user.id);
 			setdescription(response.data.description);
 			setInputs(response.data.inputs);
 			setBaseCode(response.data.baseCode);
 			setOutput(response.data.outputs);
 			setLoading(false);
-
 		} catch (error) {
 			console.log(error);
 		}
@@ -46,16 +44,15 @@ const UserTaskPage = () => {
 			formData.append("task_name", task_name);
 			formData.append("id", user.id);
 			formData.append("file", file);
-			const response = await createUserFolder(subject_id, task_id, user.id)
+			const response = await createUserFolder(subject_id, task_id, user.id);
 			sendUserFile(formData);
-			setStatus(response.status)
-			console.log(response.status)
+			setStatus(response.status);
+			console.log(response.status);
 		} catch (error) {
-			console.log(error)
-			setStatus(0)
+			console.log(error);
+			setStatus(0);
 		}
 	};
-
 
 	const loadData = async () => {
 		try {
@@ -236,9 +233,15 @@ const UserTaskPage = () => {
 				<button disabled={!file || status === 200} onClick={handleFile}>
 					ENVIAR
 				</button>
-				<button onClick={() => navigate("/user/result", {
-					state: { taskId: task_id }
-				})}>Teste</button>
+				<button
+					onClick={() => {
+						navigate("/user/result", {
+							state: { taskId: task_id },
+						});
+					}}
+				>
+					Teste
+				</button>
 			</article>
 		</div>
 	);
