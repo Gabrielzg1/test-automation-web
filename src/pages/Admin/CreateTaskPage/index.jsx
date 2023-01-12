@@ -208,7 +208,9 @@ const CreateTaskPage = () => {
 				<br />
 				<br />
 				<div className="field">
-					<label htmlFor="file">Envie aqui o arquivo Base:</label>
+					<label htmlFor="file" className={styles.file}>
+						Envie aqui o arquivo Base:
+					</label>
 					<br />
 					<input
 						type="file"
