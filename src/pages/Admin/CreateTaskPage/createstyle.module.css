@@ -3,8 +3,8 @@ input[type="file"]{
 }
 
 #body_taskcreate{
-
-
+    width: 100%;
+    height: 100vh;
     background-image: url("./stacked-waves-haikei.svg");
     background-repeat: no repeat;
     background-size: cover;
@@ -13,7 +13,7 @@ input[type="file"]{
 }
 
 
-#title-taskcreate{
+.title_taskcreate{
 
     padding:20px 75px;
     color: white;
@@ -21,7 +21,7 @@ input[type="file"]{
     font-weight: 600;
 }
 
-#input-nometaskcreate{
+.input_nometaskcreate{
 
     border-radius: 5px;
     height: 30px;
@@ -34,7 +34,7 @@ input[type="file"]{
 }
 
 
-#input-descritaskcreate{
+.input_descritaskcreate{
 
     resize: none;
     border-radius: 5px;
@@ -48,7 +48,7 @@ input[type="file"]{
 
 }
 
-#input-codebasetaskcreate{
+.input_codebasetaskcreate{
 
     resize: none;
     border-radius: 5px;
@@ -66,7 +66,7 @@ input[type="file"]{
 
 }
 
-#inputh2-taskcreator{
+#inputh2_taskcreator{
 
     color: white;
     font-weight: 600;
@@ -77,7 +77,7 @@ input[type="file"]{
 
 }
 
-.caixa-taskcreator{
+.caixa_taskcreator{
 
     display: flex;
     flex-wrap: wrap;
@@ -91,7 +91,7 @@ input[type="file"]{
 
 }
 
-#input1-taskcreator{
+.input{
 
     height: 30px;
     width: 150px;
@@ -106,7 +106,7 @@ input[type="file"]{
 
 }
 
-#arqbase-taskcreator{
+.file{
 
     margin-left: 800px;
     margin-top: -425px;

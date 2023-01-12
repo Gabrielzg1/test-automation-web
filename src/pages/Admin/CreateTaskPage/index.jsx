@@ -82,11 +82,12 @@ const CreateTaskPage = () => {
 
 	return (
 		<div id={styles.body_taskcreate}>
-			<h1 className="title">Create Task</h1>
+			<h1 className={styles.title_taskcreate}>Create Task</h1>
 			<div className="form">
 				<div className="field">
 					<label htmlFor="name">Nome:</label>
 					<input
+						className={styles.input_nometaskcreate}
 						type="text"
 						name="name"
 						id="name"
@@ -97,6 +98,7 @@ const CreateTaskPage = () => {
 				<div className="field">
 					<label htmlFor="description">Descricao:</label>
 					<input
+						className={styles.input_descritaskcreate}
 						type="text"
 						name="description"
 						id="description"
@@ -106,93 +108,96 @@ const CreateTaskPage = () => {
 				</div>
 				<br />
 				<label>
-					<b>Inputs:</b>{" "}
+					<h2 id={styles.inputh2_taskcreator}>Inputs:</h2>
 				</label>
 
 				<br />
-				<label htmlFor="number">Input 1</label>
-				<textarea
-					className={styles.input}
-					type="text"
-					onChange={(e) => setInput1(e.target.value)}
-				></textarea>
-				<br />
+				<div className="caixa_taskcreator">
+					<label htmlFor="number">Input 1</label>
+					<textarea
+						className={styles.input}
+						type="text"
+						onChange={(e) => setInput1(e.target.value)}
+					></textarea>
+					<br />
 
-				<label htmlFor="number">Input 2</label>
-				<textarea
-					className="input"
-					type="text"
-					onChange={(e) => setInput2(e.target.value)}
-				></textarea>
-				<br />
+					<label htmlFor="number">Input 2</label>
+					<textarea
+						className={styles.input}
+						type="text"
+						onChange={(e) => setInput2(e.target.value)}
+					></textarea>
+					<br />
 
-				<label htmlFor="number">Input 3</label>
-				<textarea
-					className="input"
-					type="text"
-					onChange={(e) => setInput3(e.target.value)}
-				></textarea>
-				<br />
+					<label htmlFor="number">Input 3</label>
+					<textarea
+						className={styles.input}
+						type="text"
+						onChange={(e) => setInput3(e.target.value)}
+					></textarea>
+					<br />
 
-				<label htmlFor="number">Input 4</label>
-				<textarea
-					className="input"
-					type="text"
-					onChange={(e) => setInput4(e.target.value)}
-				></textarea>
-				<br />
+					<label htmlFor="number">Input 4</label>
+					<textarea
+						className={styles.input}
+						type="text"
+						onChange={(e) => setInput4(e.target.value)}
+					></textarea>
+					<br />
 
-				<label htmlFor="number">Input 5</label>
-				<textarea
-					className="input"
-					type="text"
-					onChange={(e) => setInput5(e.target.value)}
-				></textarea>
-				<br />
+					<label htmlFor="number">Input 5</label>
+					<textarea
+						className={styles.input}
+						type="text"
+						onChange={(e) => setInput5(e.target.value)}
+					></textarea>
+					<br />
 
-				<label htmlFor="number">Input 6</label>
-				<textarea
-					className="input"
-					type="text"
-					onChange={(e) => setInput6(e.target.value)}
-				></textarea>
-				<br />
+					<label htmlFor="number">Input 6</label>
+					<textarea
+						className={styles.input}
+						type="text"
+						onChange={(e) => setInput6(e.target.value)}
+					></textarea>
+					<br />
 
-				<label htmlFor="number">Input 7</label>
-				<textarea
-					className="input"
-					type="text"
-					onChange={(e) => setInput7(e.target.value)}
-				></textarea>
-				<br />
+					<label htmlFor="number">Input 7</label>
+					<textarea
+						className={styles.input}
+						type="text"
+						onChange={(e) => setInput7(e.target.value)}
+					></textarea>
+					<br />
 
-				<label htmlFor="number">Input 8</label>
-				<textarea
-					className="input"
-					type="text"
-					onChange={(e) => setInput8(e.target.value)}
-				></textarea>
-				<br />
+					<label htmlFor="number">Input 8</label>
+					<textarea
+						className={styles.input}
+						type="text"
+						onChange={(e) => setInput8(e.target.value)}
+					></textarea>
+					<br />
 
-				<label htmlFor="number">Input 9</label>
-				<textarea
-					className="input"
-					type="text"
-					onChange={(e) => setInput9(e.target.value)}
-				></textarea>
-				<br />
+					<label htmlFor="number">Input 9</label>
+					<textarea
+						className={styles.input}
+						type="text"
+						onChange={(e) => setInput9(e.target.value)}
+					></textarea>
+					<br />
 
-				<label htmlFor="number">Input 10</label>
-				<textarea
-					className="inputs"
-					type="text"
-					onChange={(e) => setInput10(e.target.value)}
-				></textarea>
+					<label htmlFor="number">Input 10</label>
+					<textarea
+						className={styles.input}
+						type="text"
+						onChange={(e) => setInput10(e.target.value)}
+					></textarea>
+				</div>
 				<br />
 				<br />
 				<div className="field">
-					<label htmlFor="description">Código Base:</label>
+					<label htmlFor="baseCode">Código Base:</label>
 					<input
+						className={styles.input_codebasetaskcreate}
 						type="text"
 						name="baseCode"
 						id="baseCode"
@@ -203,7 +208,7 @@ const CreateTaskPage = () => {
 				<br />
 				<br />
 				<div className="field">
-					<label htmlFor="description">Envie aqui o arquivo Base:</label>
+					<label htmlFor="file">Envie aqui o arquivo Base:</label>
 					<br />
 					<input
 						type="file"
