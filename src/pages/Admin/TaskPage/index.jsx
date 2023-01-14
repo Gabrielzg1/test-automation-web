@@ -170,6 +170,100 @@ const AdminTaskPage = () => {
 				<pre>
 					<code>{output[4]}</code>
 				</pre>
+				<h3>
+					<a id="user-content-teste-02" className="anchor" aria-hidden="true">
+						<span aria-hidden="true" className="octicon octicon-link"></span>
+					</a>
+					Teste 06
+				</h3>
+				<p>
+					<a>Entrada</a>
+				</p>
+				<pre>
+					<code>{inputs[5]}</code>
+				</pre>
+				<p>
+					<a>Saída</a>
+				</p>
+				<pre>
+					<code>{output[5]}</code>
+				</pre>
+
+				<h3>
+					<a id="user-content-teste-02" className="anchor" aria-hidden="true">
+						<span aria-hidden="true" className="octicon octicon-link"></span>
+					</a>
+					Teste 07
+				</h3>
+				<p>
+					<a>Entrada</a>
+				</p>
+				<pre>
+					<code>{inputs[6]}</code>
+				</pre>
+				<p>
+					<a>Saída</a>
+				</p>
+				<pre>
+					<code>{output[6]}</code>
+				</pre>
+
+				<h3>
+					<a id="user-content-teste-02" className="anchor" aria-hidden="true">
+						<span aria-hidden="true" className="octicon octicon-link"></span>
+					</a>
+					Teste 08
+				</h3>
+				<p>
+					<a>Entrada</a>
+				</p>
+				<pre>
+					<code>{inputs[7]}</code>
+				</pre>
+				<p>
+					<a>Saída</a>
+				</p>
+				<pre>
+					<code>{output[7]}</code>
+				</pre>
+
+				<h3>
+					<a id="user-content-teste-02" className="anchor" aria-hidden="true">
+						<span aria-hidden="true" className="octicon octicon-link"></span>
+					</a>
+					Teste 09
+				</h3>
+				<p>
+					<a>Entrada</a>
+				</p>
+				<pre>
+					<code>{inputs[8]}</code>
+				</pre>
+				<p>
+					<a>Saída</a>
+				</p>
+				<pre>
+					<code>{output[8]}</code>
+				</pre>
+
+				<h3>
+					<a id="user-content-teste-02" className="anchor" aria-hidden="true">
+						<span aria-hidden="true" className="octicon octicon-link"></span>
+					</a>
+					Teste 10
+				</h3>
+				<p>
+					<a>Entrada</a>
+				</p>
+				<pre>
+					<code>{inputs[9]}</code>
+				</pre>
+				<p>
+					<a>Saída</a>
+				</p>
+				<pre>
+					<code>{output[9]}</code>
+				</pre>
 				<h2>
 					<a
 						id="user-content-código-base"
