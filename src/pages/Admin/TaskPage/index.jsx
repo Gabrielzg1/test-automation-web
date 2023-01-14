@@ -206,9 +206,14 @@ const AdminTaskPage = () => {
 					<button onClick={handleDelete}>Delete Task</button>
 				</div>
 				<div>
-					<button onClick={() => navigate("/admin/task/result", { state: { taskId: task_id } })}>Ver resultados</button>
+					<button
+						onClick={() =>
+							navigate("/admin/task/result", { state: { taskId: task_id } })
+						}
+					>
+						Ver resultados
+					</button>
 				</div>
-
 			</article>
 		</div>
 	);
