@@ -1,0 +1,148 @@
+
+#body{
+    background-image: url("./stacked-waves-haikei.svg");
+    background-repeat: no repeat;
+    background-size: cover;
+    font-family:'Poppins', sans-serif;
+
+}
+
+
+#title{
+
+    padding:20px 75px;
+    color: white;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.name{
+
+    border-radius: 5px;
+    height: 30px;
+    width: 300px;
+    margin-block-end: 20px;
+    margin-left: 75px;
+    color: Black;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.description{
+
+    resize: none;
+    border-radius: 5px;
+    height: 420px;
+    width: 40%;
+    margin-top: 20px;
+    margin-left: 75px;
+    color: Black;
+    font-weight: 500;
+    font-size: 16px;
+
+}
+
+.baseCode{
+
+    resize: none;
+    border-radius: 5px;
+    height: 420px;
+    width: 40%;
+    margin-left: 75px;
+    color: Black;
+    font-weight: 500;
+    font-size: 16px;
+    font-family:'Poppins', sans-serif;
+}
+
+#input2_taskcreator{
+
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    margin-top: 100px;
+    margin-left: 75px;
+
+
+}
+
+.caixa_taskcreator{
+
+    display: flex;
+    flex-wrap: wrap;
+    height: 1100px;
+    width: 1230px;
+    margin-top: 20px;
+    margin-left: 75px;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 20px 40px;
+
+}
+
+.input{
+
+    resize:none;
+    text-align: center;
+    height: 300px;
+    width: 560px;
+    font-family:'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    color:rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: 5px;
+    margin: 20px 20px;  
+
+}
+
+#arqbase_taskcreator{
+
+    margin-top: 80px;
+    margin-left: 75px;
+    font-family:'Poppins', sans-serif;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+
+}
+
+#escolherarq-taskcreator{
+    margin-left: 75px;
+    margin-top: 30px;
+}
+
+#label_task{
+
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: 500px;
+    background-color: transparent;
+    border: 2px solid black ;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#label_task:hover{
+    transition: 0.3s;
+    background-color: white;
+}
+
+#criar_taskcreator{
+
+    margin-top: 50px;
+    height: 50px;
+    width: 200px;
+    font-family:'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+
+}
+
+#span-taskcreator{
+
+    font-family:'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+}
