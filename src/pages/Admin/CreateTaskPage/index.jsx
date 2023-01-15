@@ -82,152 +82,155 @@ const CreateTaskPage = () => {
 
 	return (
 		<div id={styles.body}>
-			<h1 id={styles.title}>Create Task</h1>
+			<div id={styles.create}>
+				<h1 id={styles.title}>Create Task</h1>
 
-			<div>
-				<input
-					placeholder=" Nome"
-					type="text"
-					name="name"
-					id="name"
-					className={styles.name}
-					value={name}
-					onChange={(e) => setName(e.target.value)}
-				/>
-			</div>
-
-			<div>
-				<textarea
-					className={styles.description}
-					type="text"
-					name="description"
-					id="description"
-					placeholder=" Description"
-					value={description}
-					onChange={(e) => setDescription(e.target.value)}
-				></textarea>
-				<textarea
-					className={styles.baseCode}
-					type="text"
-					name="baseCode"
-					id="baseCode"
-					placeholder=" Código Base"
-					value={baseCode}
-					onChange={(e) => setBaseCode(e.target.value)}
-				></textarea>
-			</div>
-
-			<h2 id={styles.inputh2_taskcreator}>Inputs Publicos:</h2>
-
-			<div className={styles.caixa_taskcreator}>
 				<div>
-					<textarea
-						className={styles.input}
+					<input
+						placeholder=" Nome"
 						type="text"
-						onChange={(e) => setInput1(e.target.value)}
-						placeholder="Input 1"
-					></textarea>
-				</div>
-				<div>
-					<textarea
-						className={styles.input}
-						type="text"
-						onChange={(e) => setInput2(e.target.value)}
-						placeholder="Input 2"
-					></textarea>
-				</div>
-				<div>
-					<textarea
-						className={styles.input}
-						type="text"
-						onChange={(e) => setInput3(e.target.value)}
-						placeholder="Input 3"
-					></textarea>
+						name="name"
+						id="name"
+						className={styles.name}
+						value={name}
+						onChange={(e) => setName(e.target.value)}
+					/>
 				</div>
 
 				<div>
 					<textarea
-						className={styles.input}
+						className={styles.description}
 						type="text"
-						onChange={(e) => setInput4(e.target.value)}
-						placeholder="Input 4"
+						name="description"
+						id="description"
+						placeholder=" Description"
+						value={description}
+						onChange={(e) => setDescription(e.target.value)}
 					></textarea>
-				</div>
-				<div>
 					<textarea
-						className={styles.input}
+						className={styles.baseCode}
 						type="text"
-						onChange={(e) => setInput5(e.target.value)}
-						placeholder="Input 5"
-					></textarea>
-				</div>
-			</div>
-			<div className={styles.caixa_taskcreator}>
-				<div>
-					<textarea
-						className={styles.input}
-						type="text"
-						onChange={(e) => setInput6(e.target.value)}
-						placeholder="Input 6"
-					></textarea>
-				</div>
-				<div>
-					<textarea
-						className={styles.input}
-						type="text"
-						onChange={(e) => setInput7(e.target.value)}
-						placeholder="Input 7"
-					></textarea>
-				</div>
-				<div>
-					<textarea
-						className={styles.input}
-						type="text"
-						onChange={(e) => setInput8(e.target.value)}
-						placeholder="Input 8"
+						name="baseCode"
+						id="baseCode"
+						placeholder=" Código Base"
+						value={baseCode}
+						onChange={(e) => setBaseCode(e.target.value)}
 					></textarea>
 				</div>
 
-				<div>
-					<textarea
-						className={styles.input}
-						type="text"
-						onChange={(e) => setInput9(e.target.value)}
-						placeholder="Input 9"
-					></textarea>
-				</div>
-				<div>
-					<textarea
-						className={styles.input}
-						type="text"
-						onChange={(e) => setInput10(e.target.value)}
-						placeholder="Input 10"
-					></textarea>
-				</div>
-			</div>
+				<h2 id={styles.inputh2_taskcreator}>Inputs Publicos:</h2>
 
-			<h2 htmlFor="file" className={styles.arqbase_taskcreator}>
-				Envie aqui o arquivo Base:
-			</h2>
-			<div className={styles.escolherarq_taskcreator}></div>
-			<input
-				type="file"
-				name="file"
-				id="file"
-				onChange={(e) => {
-					setFile(e.target.files[0]);
-					console.log(file);
-				}}
-			/>
+				<div className={styles.caixa_taskcreator}>
+					<div>
+						<textarea
+							className={styles.input}
+							type="text"
+							onChange={(e) => setInput1(e.target.value)}
+							placeholder=" Input 1"
+						></textarea>
+					</div>
+					<div>
+						<textarea
+							className={styles.input}
+							type="text"
+							onChange={(e) => setInput2(e.target.value)}
+							placeholder=" Input 2"
+						></textarea>
+					</div>
+					<div>
+						<textarea
+							className={styles.input}
+							type="text"
+							onChange={(e) => setInput3(e.target.value)}
+							placeholder=" Input 3"
+						></textarea>
+					</div>
 
-			<div className="actions">
-				<button
-					className={styles.criar_taskcreator}
-					disabled={!file}
-					onClick={hadleNewTask}
-				>
-					Criar
-				</button>
+					<div>
+						<textarea
+							className={styles.input}
+							type="text"
+							onChange={(e) => setInput4(e.target.value)}
+							placeholder=" Input 4"
+						></textarea>
+					</div>
+					<div>
+						<textarea
+							className={styles.input}
+							type="text"
+							onChange={(e) => setInput5(e.target.value)}
+							placeholder=" Input 5"
+						></textarea>
+					</div>
+				</div>
+				<h2 id={styles.inputh2_taskcreator}>Inputs Privados:</h2>
+
+				<div className={styles.caixa_taskcreator}>
+					<div>
+						<textarea
+							className={styles.input}
+							type="text"
+							onChange={(e) => setInput6(e.target.value)}
+							placeholder=" Input 6"
+						></textarea>
+					</div>
+					<div>
+						<textarea
+							className={styles.input}
+							type="text"
+							onChange={(e) => setInput7(e.target.value)}
+							placeholder=" Input 7"
+						></textarea>
+					</div>
+					<div>
+						<textarea
+							className={styles.input}
+							type="text"
+							onChange={(e) => setInput8(e.target.value)}
+							placeholder=" Input 8"
+						></textarea>
+					</div>
+
+					<div>
+						<textarea
+							className={styles.input}
+							type="text"
+							onChange={(e) => setInput9(e.target.value)}
+							placeholder=" Input 9"
+						></textarea>
+					</div>
+					<div>
+						<textarea
+							className={styles.input}
+							type="text"
+							onChange={(e) => setInput10(e.target.value)}
+							placeholder=" Input 10"
+						></textarea>
+					</div>
+				</div>
+
+				<div className={styles.escolherarq_taskcreator}>
+					<h2 htmlFor="file" id={styles.inputh2_taskcreator}>
+						Envie aqui o arquivo Base:
+					</h2>
+					<input
+						type="file"
+						name="file"
+						id="file"
+						onChange={(e) => {
+							setFile(e.target.files[0]);
+							console.log(file);
+						}}
+					/>
+
+					<button
+						id={styles.criar_taskcreator}
+						disabled={!file}
+						onClick={hadleNewTask}
+					>
+						Criar
+					</button>
+				</div>
 			</div>
 		</div>
 	);

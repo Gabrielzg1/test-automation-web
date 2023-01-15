@@ -1,0 +1,53 @@
+.bodysubjects{
+
+    background-image: url("./img.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family:'Poppins', sans-serif;
+     width: 100%;
+    height: 100vh;
+    color: white;
+
+
+}
+
+#title_subjects{
+
+    padding:20px 75px;
+    color: white;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+.box_subject{
+
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 75px;
+    height: auto;
+    max-width: 1300px;
+    padding: 10px 10px;
+    border: 2px solid white;
+    border-radius: 24px;
+
+}
+
+.item{
+
+    height: 70px;
+    width: 250px;
+    font-size: 30px;
+    font-weight: 400;
+    margin: 20px 20px;
+    border-radius: 24px;
+    border: 3px solid black;
+    background-color: transparent;
+    color:white;
+    cursor: pointer;
+}
+
+.item:hover{
+    color:black;
+    background-color: white;
+
+}

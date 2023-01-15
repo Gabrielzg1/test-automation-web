@@ -4,7 +4,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { getTasks } from "../../../services/api";
 import Tasks from "./Tasks";
 import Nav from "../../Components/Nav";
-import "./styles.css";
 
 const AdminSubjectPage = () => {
 	const navigate = useNavigate("/admin/home");
@@ -33,12 +32,18 @@ const AdminSubjectPage = () => {
 	return (
 		<div id="main">
 			<Nav navName={admin} onLogout={logout} type="admin" />
-			<h1>Subject: <i>{subject_name}</i></h1>
+			<h1>
+				Subject: <i>{subject_name}</i>
+			</h1>
 			<button
 				onClick={() => {
-					navigate("/admin/subject/createTask", { state: { subject_id, subject_name } });
+					navigate("/admin/subject/createTask", {
+						state: { subject_id, subject_name },
+					});
 				}}
-			>Criar nova task</button>
+			>
+				Criar nova task
+			</button>
 			<Tasks tasks_={tasks} subjectId={subject_id} />
 		</div>
 	);

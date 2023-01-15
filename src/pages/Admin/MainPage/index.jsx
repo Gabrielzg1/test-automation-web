@@ -3,7 +3,8 @@ import { AuthContext } from "../../../contexts/Admin/auth";
 import { Navigate, Link, useNavigate } from "react-router-dom";
 import { get, getSubjects } from "../../../services/api";
 import Nav from "../../Components/Nav";
-import "./styles.css";
+import Loading from "../../Components/Loading";
+import styles from "./style.module.css";
 import Subjects from "./Subjects";
 
 const AdminMainPage = () => {
@@ -33,14 +34,7 @@ const AdminMainPage = () => {
 	if (!authenticated) return <Navigate to="/adminLogin" />;
 
 	if (loading) {
-		return <div className="loading">Loading...</div>;
-	}
-	if (loadingError) {
-		return (
-			<div className="loading">
-				Loading Error <Link to="/login">Back</Link>
-			</div>
-		);
+		return <Loading />;
 	}
 
 	const handleLogout = () => {
@@ -49,9 +43,11 @@ const AdminMainPage = () => {
 	};
 
 	return (
-		<div id="main">
+		<div className={styles.bodysubjects}>
 			<Nav onLogout={handleLogout} navName={admin} type="admin" />
-			<Subjects subjects_={subjects} />
+			<div className={styles.bodysubjects}>
+				<Subjects subjects_={subjects} />
+			</div>
 		</div>
 	);
 };
