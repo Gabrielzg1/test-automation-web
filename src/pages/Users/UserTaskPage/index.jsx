@@ -4,6 +4,7 @@ import { AuthContextUser } from "../../../contexts/User/auth";
 import {
 	createResult,
 	createUserFolder,
+	deleteResult,
 	getTask,
 	sendUserFile,
 } from "../../../services/api";
@@ -28,7 +29,6 @@ const UserTaskPage = () => {
 		try {
 			setLoading(true);
 			const response = await getTask(subject_id, task_id);
-			console.log(user.id);
 			setdescription(response.data.description);
 			setInputs(response.data.inputs);
 			setBaseCode(response.data.baseCode);
@@ -52,12 +52,17 @@ const UserTaskPage = () => {
 			const response = await createUserFolder(subject_id, task_id, user.id);
 			sendUserFile(formData);
 			setStatus(response.status);
-			console.log(response.status);
 			await createResult(task_id, user.id);
 		} catch (error) {
 			console.log(error);
 			setStatus(0);
 		}
+	};
+
+	const back = () => {
+		navigate("/user/subject", {
+			state: { subject_id, subject_name },
+		});
 	};
 
 	const loadData = async () => {
@@ -78,6 +83,11 @@ const UserTaskPage = () => {
 
 	return (
 		<div id="main">
+			<div className={styles.nav}>
+				<button className={styles.button} onClick={back}>
+					Voltar
+				</button>
+			</div>
 			<article className="markdown-body">
 				<h1>
 					<a id="user-content-números-da-mega-sena" aria-hidden="true">
@@ -242,7 +252,7 @@ const UserTaskPage = () => {
 				<button
 					onClick={() => {
 						navigate("/user/result", {
-							state: { taskId: task_id },
+							state: { taskId: task_id, task_name, subject_id, subject_name },
 						});
 					}}
 				>

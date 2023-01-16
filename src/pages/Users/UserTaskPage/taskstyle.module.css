@@ -1,0 +1,16 @@
+.nav {
+    display: flex;
+    align-items: center;
+    background-color: #333333;
+    border-bottom: 1px solid #d5d5d5;
+    padding: .7rem;
+  
+  }
+  .button {
+    color: #fff;
+    background-color: #5F0F40;
+    width: 80px;
+    border-radius: 10px;
+    height: 25px;
+    font-weight: 700;
+  }

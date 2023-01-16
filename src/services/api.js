@@ -93,3 +93,7 @@ export const createResult = async (task_id, user_id) => {
 	let url = `user/${user_id}/task/${task_id}/result`;
 	return api.post(url);
 };
+export const deleteResult = async (task_id, user_id, id) => {
+	let url = `user/${user_id}/task/${task_id}/result/${id}`;
+	return api.delete(url);
+};

@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import Loading from "../../Components/Loading";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getUser, getUserResult } from "../../../services/api";
+import { getUser, getUserResult, deleteResult } from "../../../services/api";
 import { AuthContextUser } from "../../../contexts/User/auth";
 import Result from "./Result";
 import styles from "./resultUserStyle.module.css";
@@ -10,16 +10,24 @@ const UserResultPage = () => {
 	const { user } = useContext(AuthContextUser);
 
 	const navigate = useNavigate();
-
+	const [id, setId] = useState();
 	const [loading, setLoading] = useState(true);
 	const [loadingError, setLoadingError] = useState(false);
 	const { state } = useLocation();
-	const { taskId } = state;
+	const { taskId, task_name, subject_id, subject_name } = state;
 
 	const [result, setResult] = useState();
 
 	const back = () => {
-		console.log("voltar");
+		deleteResult(taskId, user.id);
+		navigate("/user/subject/task", {
+			state: {
+				task_id: taskId,
+				task_name: task_name,
+				subject_id,
+				subject_name,
+			},
+		});
 	};
 
 	const loadData = async () => {
@@ -28,7 +36,7 @@ const UserResultPage = () => {
 			console.log(taskId);
 
 			const response = await getUserResult(user.id, taskId);
-			console.log(response.data);
+			setId(response.data.id);
 			setResult(response.data.result);
 			setLoading(false);
 		} catch (err) {

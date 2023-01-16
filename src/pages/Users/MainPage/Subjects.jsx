@@ -6,12 +6,10 @@ const Subjects = ({ subjects_ }) => {
 	const [subjects, setSubjects] = useState([]);
 	const navigate = useNavigate();
 
-
-
 	return (
 		<div className="subjects">
 			<h2>Subjects: </h2>
-			{subjects_.map((subject) => {
+			{subjects_.map((subject, i) => {
 				return (
 					<button
 						className="item"
@@ -26,7 +24,7 @@ const Subjects = ({ subjects_ }) => {
 							<div className="subject">{subject.name}</div>
 						</div>
 					</button>
-				)
+				);
 			})}
 		</div>
 	);
