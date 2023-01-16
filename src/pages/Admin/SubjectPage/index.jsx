@@ -33,19 +33,23 @@ const AdminSubjectPage = () => {
 	return (
 		<div className={styles.body}>
 			<Nav navName={admin} onLogout={logout} type="admin" />
-			<h1>
+			<h1 className={styles.title}>
 				Subject: <i>{subject_name}</i>
 			</h1>
-			<button
-				onClick={() => {
-					navigate("/admin/subject/createTask", {
-						state: { subject_id, subject_name },
-					});
-				}}
-			>
-				Criar nova task
-			</button>
+
 			<Tasks tasks_={tasks} subjectId={subject_id} />
+			<div className={styles.container}>
+				<button
+					className={styles.button}
+					onClick={() => {
+						navigate("/admin/subject/createTask", {
+							state: { subject_id, subject_name },
+						});
+					}}
+				>
+					Criar nova task
+				</button>
+			</div>
 		</div>
 	);
 };
