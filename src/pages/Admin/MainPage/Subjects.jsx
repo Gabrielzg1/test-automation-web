@@ -5,7 +5,7 @@ import styles from "./style.module.css";
 const Subjects = ({ subjects_ }) => {
 	const navigate = useNavigate();
 	return (
-		<div className={styles.box_subjects}>
+		<div className={styles.box}>
 			<h2 id={styles.title_subjects}>Subjects: </h2>
 			{subjects_.map((subject) => (
 				<button

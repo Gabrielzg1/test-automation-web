@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { getTasks } from "../../../services/api";
 import Tasks from "./Tasks";
 import Nav from "../../Components/Nav";
+import styles from "./style.module.css";
 
 const AdminSubjectPage = () => {
 	const navigate = useNavigate("/admin/home");
@@ -30,7 +31,7 @@ const AdminSubjectPage = () => {
 	}, []);
 
 	return (
-		<div id="main">
+		<div className={styles.body}>
 			<Nav navName={admin} onLogout={logout} type="admin" />
 			<h1>
 				Subject: <i>{subject_name}</i>

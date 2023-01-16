@@ -1,4 +1,4 @@
-.bodysubjects{
+.body{
 
     background-image: url("./img.svg");
     background-repeat: no-repeat;
@@ -11,7 +11,7 @@
 
 }
 
-#title_subjects{
+#title{
 
     padding:20px 75px;
     color: white;
@@ -19,7 +19,7 @@
     font-weight: 600;
 }
 
-.box_subject{
+.box{
 
     display: flex;
     flex-wrap: wrap;
