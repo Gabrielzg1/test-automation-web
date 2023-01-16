@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import Loading from "../../Components/Loading";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getUser, getUserResult, deleteResult } from "../../../services/api";
+import { getUserResult, deleteResult, getTask } from "../../../services/api";
 import { AuthContextUser } from "../../../contexts/User/auth";
 import Result from "./Result";
 import styles from "./resultUserStyle.module.css";
@@ -11,6 +11,7 @@ const UserResultPage = () => {
 
 	const navigate = useNavigate();
 	const [id, setId] = useState();
+	const [taskName, setTaskName] = useState();
 	const [loading, setLoading] = useState(true);
 	const [loadingError, setLoadingError] = useState(false);
 	const { state } = useLocation();
@@ -34,8 +35,9 @@ const UserResultPage = () => {
 		try {
 			setLoading(true);
 			console.log(taskId);
-
+			const task = await getTask(subject_id, taskId);
 			const response = await getUserResult(user.id, taskId);
+			setTaskName(task.data.name);
 			setId(response.data.id);
 			setResult(response.data.result);
 			setLoading(false);
@@ -59,7 +61,8 @@ const UserResultPage = () => {
 					Voltar
 				</button>
 			</div>
-			<h2 className={styles.title}>Result: </h2>
+			<h2 className={styles.title0}>{taskName}</h2>
+			<h3 className={styles.title}>Result: </h3>
 			<Result result={result}></Result>
 		</div>
 	);

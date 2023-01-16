@@ -5,7 +5,7 @@ import styles from "./resultUserStyle.module.css";
 const Result = ({ result }) => {
 	return (
 		<div className={styles.checklist}>
-			<ul>
+			<ul className={styles.ul}>
 				{result.map((test, i) => (
 					<li key={i} className={styles.item}>
 						<h3 className={styles.subtitle}>Teste {i + 1}:</h3>
