@@ -53,6 +53,7 @@ const UserTaskPage = () => {
 			sendUserFile(formData);
 			setStatus(response.status);
 			console.log(response.status);
+			await createResult(task_id, user.id);
 		} catch (error) {
 			console.log(error);
 			setStatus(0);
@@ -65,9 +66,6 @@ const UserTaskPage = () => {
 		} catch (err) {
 			console.error(err);
 		}
-	};
-	const handleCreateResult = async () => {
-		await createResult(task_id, user.id);
 	};
 
 	useEffect(() => {
@@ -243,7 +241,6 @@ const UserTaskPage = () => {
 				</button>
 				<button
 					onClick={() => {
-						handleCreateResult();
 						navigate("/user/result", {
 							state: { taskId: task_id },
 						});

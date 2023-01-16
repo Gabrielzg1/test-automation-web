@@ -18,6 +18,10 @@ const UserResultPage = () => {
 
 	const [result, setResult] = useState();
 
+	const back = () => {
+		console.log("voltar");
+	};
+
 	const loadData = async () => {
 		try {
 			setLoading(true);
@@ -31,6 +35,7 @@ const UserResultPage = () => {
 			console.error(err);
 		}
 	};
+
 	useEffect(() => {
 		(async () => await loadData())();
 	}, []);
@@ -41,6 +46,12 @@ const UserResultPage = () => {
 
 	return (
 		<div className={styles.main}>
+			<div className={styles.nav}>
+				<button className={styles.button} onClick={back}>
+					Voltar
+				</button>
+			</div>
+			<h2 className={styles.title}>Result: </h2>
 			<Result result={result}></Result>
 		</div>
 	);

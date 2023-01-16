@@ -5,11 +5,10 @@ import styles from "./resultUserStyle.module.css";
 const Result = ({ result }) => {
 	return (
 		<div className={styles.checklist}>
-			<h2>Result: </h2>
 			<ul>
 				{result.map((test, i) => (
 					<li key={i} className={styles.item}>
-						<h3>Teste {i + 1}:</h3>
+						<h3 className={styles.subtitle}>Teste {i + 1}:</h3>
 						{test == 1 && <label className={styles.approved}>Passou</label>}
 						{test == 0 && <label className={styles.unapproved}>Reprovou</label>}
 					</li>
