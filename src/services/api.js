@@ -62,8 +62,7 @@ export const sendFile = async (formData) => {
 
 export const sendUserFile = async (formData) => {
 	return api.post("/filesUser", formData);
-
-}
+};
 export const getSubjectsUser = async (name) => {
 	return api.get(`/users/subjects/${name}`);
 };
@@ -75,20 +74,22 @@ export const deleteTask = (subject_id, id) => {
 	return api.delete(url);
 };
 export const createUserFolder = async (subject_id, task_id, id) => {
-	let url = `/subjects/${subject_id}/tasks/${task_id}/${id}`
-	return api.get(url)
-}
+	let url = `/subjects/${subject_id}/tasks/${task_id}/${id}`;
+	return api.get(url);
+};
 export const getUserResult = async (user_id, task_id) => {
-	let url = `/user/${user_id}/task/${task_id}/result`
-	return api.get(url)
-
-}
+	let url = `/user/${user_id}/task/${task_id}/result`;
+	return api.get(url);
+};
 export const getUsersResult = async (task_id) => {
-	let url = `/task/${task_id}/result`
-	return api.get(url)
-
-}
+	let url = `/task/${task_id}/result`;
+	return api.get(url);
+};
 export const getUser = async (user_id) => {
-	let url = `user/${user_id}`
-	return api.get(url)
-}
+	let url = `user/${user_id}`;
+	return api.get(url);
+};
+export const createResult = async (task_id, user_id) => {
+	let url = `user/${user_id}/task/${task_id}/result`;
+	return api.post(url);
+};

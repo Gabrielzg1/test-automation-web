@@ -1,7 +1,12 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import { AuthContextUser } from "../../../contexts/User/auth";
-import { createUserFolder, getTask, sendUserFile } from "../../../services/api";
+import {
+	createResult,
+	createUserFolder,
+	getTask,
+	sendUserFile,
+} from "../../../services/api";
 import Loading from "../../Components/Loading";
 import styles from "./taskstyle.module.css";
 
@@ -60,6 +65,9 @@ const UserTaskPage = () => {
 		} catch (err) {
 			console.error(err);
 		}
+	};
+	const handleCreateResult = async () => {
+		await createResult(task_id, user.id);
 	};
 
 	useEffect(() => {
@@ -235,6 +243,7 @@ const UserTaskPage = () => {
 				</button>
 				<button
 					onClick={() => {
+						handleCreateResult();
 						navigate("/user/result", {
 							state: { taskId: task_id },
 						});
