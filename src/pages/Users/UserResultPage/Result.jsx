@@ -9,8 +9,11 @@ const Result = ({ result }) => {
 				{result.map((test, i) => (
 					<li key={i} className={styles.item}>
 						<h3 className={styles.subtitle}>Teste {i + 1}:</h3>
-						{test == 1 && <label className={styles.approved}>Passou</label>}
-						{test == 0 && <label className={styles.unapproved}>Reprovou</label>}
+						{test === 1 && <label className={styles.approved}>Passou</label>}
+						{test === 0 && (
+							<label className={styles.unapproved}>Reprovou</label>
+						)}
+						{test === 2 && <label className={styles.unapproved}>Vázio</label>}
 					</li>
 				))}
 			</ul>
