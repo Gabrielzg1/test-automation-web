@@ -7,25 +7,28 @@ const Tasks = ({ tasks_, subjectId }) => {
 	return (
 		<div className="tasks">
 			<h2 className={styles.title}>Tasks: </h2>
-			{tasks_.map((task) => (
-				<button
-					className={styles.item}
-					key={task._id}
-					onClick={() => {
-						navigate("/subject/task", {
-							state: {
-								task_id: task._id,
-								task_name: task.name,
-								subject_id: subjectId,
-							},
-						});
-					}}
-				>
-					<div className="info">
-						<div className="task">{task.name}</div>
-					</div>
-				</button>
-			))}
+			<ul>
+				{tasks_.map((task) => (
+					<li key={task._id}>
+						<button
+							className={styles.item}
+							onClick={() => {
+								navigate("/subject/task", {
+									state: {
+										task_id: task._id,
+										task_name: task.name,
+										subject_id: subjectId,
+									},
+								});
+							}}
+						>
+							<div className="info">
+								<div className="task">{task.name}</div>
+							</div>
+						</button>
+					</li>
+				))}
+			</ul>
 		</div>
 	);
 };

@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getSubjectsUser } from "../../../services/api";
+import styles from "./mainuserstyle.module.css";
 
 const Subjects = ({ subjects_ }) => {
-	const [subjects, setSubjects] = useState([]);
 	const navigate = useNavigate();
-
 	return (
-		<div className="subjects">
-			<h2>Subjects: </h2>
+		<div className={styles.box}>
+			<h2 id={styles.title_subjects}>Subjects: </h2>
 			{subjects_.map((subject, i) => {
 				return (
 					<button
-						className="item"
+						className={styles.item}
 						key={subject._id}
 						onClick={() => {
 							navigate("/user/subject", {

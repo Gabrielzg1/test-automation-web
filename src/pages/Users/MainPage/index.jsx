@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Navigate, Link } from "react-router-dom";
-import Loading from "../../Components/Loading"
+import Loading from "../../Components/Loading";
 import { get, getSubjectsUser, showSubjects } from "../../../services/api";
 import Nav from "../../Components/Nav";
-import styles from "./mainuserstyle.module.css"
+import styles from "./mainuserstyle.module.css";
 import Subjects from "./Subjects";
 import { AuthContextUser } from "../../../contexts/User/auth";
 
@@ -20,13 +20,11 @@ const UserMainPage = () => {
 			setLoading(true);
 			const response = await get(user?.id, "users");
 			setName(response.data.username);
-			setSubjects(await showSubjects(user.id))
+			setSubjects(await showSubjects(user.id));
 			setLoading(false);
 		} catch (err) {
 			console.error(err);
 			setLoadingError(true);
-
-
 		}
 	};
 	useEffect(() => {
@@ -52,11 +50,9 @@ const UserMainPage = () => {
 	};
 
 	return (
-		<div id="main">
+		<div className={styles.bodysubjects}>
 			<Nav onLogout={handleLogout} navName={user} type="users" />
 			<Subjects subjects_={subjects.data} />
-
-
 		</div>
 	);
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import styles from "./usersubjectstyle.module.css";
 
 const Tasks = ({ tasks_, subjectId, subjectName }) => {
 	const navigate = useNavigate();
@@ -10,7 +11,7 @@ const Tasks = ({ tasks_, subjectId, subjectName }) => {
 				{tasks_.map((task) => (
 					<li key={task._id}>
 						<button
-							className="item"
+							className={styles.item}
 							onClick={() => {
 								navigate("/user/subject/task", {
 									state: {

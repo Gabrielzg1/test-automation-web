@@ -4,7 +4,7 @@ import { getTasks } from "../../../services/api";
 import Tasks from "./Tasks";
 import Nav from "../../Components/Nav";
 import Loading from "../../Components/Loading";
-import "./styles.css";
+import styles from "./usersubjectstyle.module.css";
 import { AuthContextUser } from "../../../contexts/User/auth";
 
 const UserSubjectPage = () => {
@@ -35,9 +35,9 @@ const UserSubjectPage = () => {
 	}
 
 	return (
-		<div id="main">
+		<div className={styles.body}>
 			<Nav navName={user} onLogout={logout} type="users" />
-			<h1>
+			<h1 className={styles.title}>
 				Subject: <i>{subject_name}</i>
 			</h1>
 			<Tasks tasks_={tasks} subjectId={subject_id} subjectName={subject_name} />
