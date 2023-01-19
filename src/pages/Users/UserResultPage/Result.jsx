@@ -13,7 +13,11 @@ const Result = ({ result }) => {
 						{test === 0 && (
 							<label className={styles.unapproved}>Reprovou</label>
 						)}
-						{test === 2 && <label className={styles.unapproved}>Vázio</label>}
+						{test === 2 && (
+							<label className={styles.error}>
+								Erro nas saidas - reenvie o arquivo
+							</label>
+						)}
 					</li>
 				))}
 			</ul>

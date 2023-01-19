@@ -99,3 +99,6 @@
   height: 25px;
   font-weight: 700;
 }
+.error {
+  color: rgb(255, 213, 0);
+}

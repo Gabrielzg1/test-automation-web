@@ -6,6 +6,7 @@ import {
 	createUserFolder,
 	deleteResult,
 	getTask,
+	getUserResult,
 	sendUserFile,
 } from "../../../services/api";
 import Loading from "../../Components/Loading";
@@ -24,6 +25,7 @@ const UserTaskPage = () => {
 	const [inputs, setInputs] = useState([]);
 	const [baseCode, setBaseCode] = useState("");
 	const [output, setOutput] = useState([]);
+	const [exist, setExist] = useState(false);
 
 	const handleTask = async () => {
 		try {
@@ -34,6 +36,11 @@ const UserTaskPage = () => {
 			setBaseCode(response.data.baseCode);
 			setOutput(response.data.outputs);
 			setLoading(false);
+			const result = await getUserResult(user.id, task_id);
+			console.log(result.data);
+			if (result.data) {
+				setExist(true);
+			}
 		} catch (error) {
 			console.log(error);
 		}
@@ -53,6 +60,7 @@ const UserTaskPage = () => {
 			sendUserFile(formData);
 			setStatus(response.status);
 			await createResult(task_id, user.id);
+			setExist(true);
 		} catch (error) {
 			console.log(error);
 			setStatus(0);
@@ -233,31 +241,45 @@ const UserTaskPage = () => {
 					</a>
 					Send Task
 				</h2>
-				<div className="field">
-					<label htmlFor="description">Envie aqui o arquivo:</label>
-					<br />
-					<input
-						type="file"
-						name="file"
-						id="file"
-						onChange={(e) => {
-							setFile(e.target.files[0]);
-							console.log(file);
+				<div className={styles.field}>
+					<div className={styles.file}>
+						<label>Envie aqui o arquivo:</label>
+						<br />
+						<input
+							type="file"
+							name="file"
+							id="file"
+							onChange={(e) => {
+								setFile(e.target.files[0]);
+								console.log(file);
+							}}
+						/>
+					</div>
+
+					<button
+						disabled={!file || status === 200 || exist}
+						onClick={() => handleFile()}
+						className={styles.send}
+					>
+						Enviar
+					</button>
+					<button
+						className={styles.result}
+						disabled={!exist}
+						onClick={() => {
+							navigate("/user/result", {
+								state: { taskId: task_id, task_name, subject_id, subject_name },
+							});
 						}}
-					/>
+					>
+						Ver resultado
+					</button>
+					{exist && (
+						<div className={styles.errorField}>
+							<span>Arquivo já enviado - clique em "Ver resultado"</span>
+						</div>
+					)}
 				</div>
-				<button disabled={!file || status === 200} onClick={handleFile}>
-					ENVIAR
-				</button>
-				<button
-					onClick={() => {
-						navigate("/user/result", {
-							state: { taskId: task_id, task_name, subject_id, subject_name },
-						});
-					}}
-				>
-					Teste
-				</button>
 			</article>
 		</div>
 	);

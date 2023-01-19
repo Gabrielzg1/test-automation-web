@@ -14,3 +14,35 @@
     height: 25px;
     font-weight: 700;
   }
+  .errorField {
+    margin-top: 10px;
+    background-color: rgb(251, 251, 251);
+    height: 60px;
+    width: 600px;
+    color: red;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin-left: 150px;
+    font-weight: 700;
+    text-align: center;
+
+}
+.field{
+  display: grid;
+  gap: 10px;
+}
+.send{
+  width: 100%;
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+.result {
+  width: 100%;
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+.file{
+  grid-column-start: 1;
+  grid-column-end: 2;
+}
