@@ -60,7 +60,9 @@ const UserTaskPage = () => {
 			sendUserFile(formData);
 			setStatus(response.status);
 			await createResult(task_id, user.id);
-			setExist(true);
+			setTimeout(() => {
+				setExist(true);
+			}, 500);
 		} catch (error) {
 			console.log(error);
 			setStatus(0);
