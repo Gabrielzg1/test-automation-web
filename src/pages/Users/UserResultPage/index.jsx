@@ -20,7 +20,7 @@ const UserResultPage = () => {
 	const [result, setResult] = useState();
 
 	const back = () => {
-		deleteResult(taskId, user.id);
+		//deleteResult(taskId, user.id);
 		navigate("/user/subject/task", {
 			state: {
 				task_id: taskId,
@@ -39,7 +39,8 @@ const UserResultPage = () => {
 			const response = await getUserResult(user.id, taskId);
 
 			setTaskName(task.data.name);
-			setId(response.data.id);
+			//setId(response.data.id);
+			console.log(response.data);
 			setResult(response.data.result);
 			setLoading(false);
 		} catch (err) {

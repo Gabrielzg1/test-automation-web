@@ -38,9 +38,7 @@ const UserTaskPage = () => {
 			setLoading(false);
 			const result = await getUserResult(user.id, task_id);
 			console.log(result.data);
-			if (result.data) {
-				setExist(true);
-			}
+			if (result.data) setExist(true);
 		} catch (error) {
 			console.log(error);
 		}
@@ -51,6 +49,7 @@ const UserTaskPage = () => {
 
 	const handleFile = async () => {
 		try {
+			setExist(false);
 			const formData = new FormData();
 			formData.append("subject_name", subject_name);
 			formData.append("task_name", task_name);
@@ -59,14 +58,18 @@ const UserTaskPage = () => {
 			const response = await createUserFolder(subject_id, task_id, user.id);
 			sendUserFile(formData);
 			setStatus(response.status);
-			await createResult(task_id, user.id);
-			setTimeout(() => {
-				setExist(true);
-			}, 500);
+			setExist(true);
 		} catch (error) {
 			console.log(error);
 			setStatus(0);
 		}
+	};
+	const handleCreateResult = async () => {
+		await createResult(task_id, user.id);
+		setExist(true);
+		navigate("/user/result", {
+			state: { taskId: task_id, task_name, subject_id, subject_name },
+		});
 	};
 
 	const back = () => {
@@ -260,7 +263,7 @@ const UserTaskPage = () => {
 
 					<button
 						disabled={!file || status === 200 || exist}
-						onClick={() => handleFile()}
+						onClick={handleFile}
 						className={styles.send}
 					>
 						Enviar
@@ -268,11 +271,7 @@ const UserTaskPage = () => {
 					<button
 						className={styles.result}
 						disabled={!exist}
-						onClick={() => {
-							navigate("/user/result", {
-								state: { taskId: task_id, task_name, subject_id, subject_name },
-							});
-						}}
+						onClick={handleCreateResult}
 					>
 						Ver resultado
 					</button>
