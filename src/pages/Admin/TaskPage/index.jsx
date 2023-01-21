@@ -302,7 +302,7 @@ const AdminTaskPage = () => {
 				<div>
 					<button
 						onClick={() =>
-							navigate("/admin/task/result", { state: { taskId: task_id } })
+							navigate("/admin/task/result", { state: { taskId: task_id, subjectId: subject_id } })
 						}
 					>
 						Ver resultados
