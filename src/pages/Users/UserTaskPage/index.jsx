@@ -65,7 +65,7 @@ const UserTaskPage = () => {
 		}
 	};
 	const handleCreateResult = async () => {
-		await createResult(task_id, user.id);
+		if (!exist) await createResult(task_id, user.id);
 		setExist(true);
 		navigate("/user/result", {
 			state: { taskId: task_id, task_name, subject_id, subject_name },
