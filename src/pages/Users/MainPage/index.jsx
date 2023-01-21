@@ -23,6 +23,7 @@ const UserMainPage = () => {
 			setSubjects(await showSubjects(user.id));
 			setLoading(false);
 		} catch (err) {
+			setLoading(false);
 			console.error(err);
 			setLoadingError(true);
 		}
@@ -38,11 +39,7 @@ const UserMainPage = () => {
 	}
 
 	if (loadingError) {
-		return (
-			<div className="loading">
-				Loading Error <Link to="/user/login">Back</Link>
-			</div>
-		);
+		logout();
 	}
 
 	const handleLogout = async () => {

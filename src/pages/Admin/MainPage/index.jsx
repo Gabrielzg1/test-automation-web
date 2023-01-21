@@ -36,6 +36,9 @@ const AdminMainPage = () => {
 	if (loading) {
 		return <Loading />;
 	}
+	if (loadingError) {
+		logout();
+	}
 
 	const handleLogout = () => {
 		console.log("logout");

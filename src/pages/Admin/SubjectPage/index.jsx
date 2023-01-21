@@ -36,9 +36,9 @@ const AdminSubjectPage = () => {
 			<h1 className={styles.title}>
 				Subject: <i>{subject_name}</i>
 			</h1>
-
-			<Tasks tasks_={tasks} subjectId={subject_id} />
 			<div className={styles.container}>
+				<Tasks tasks_={tasks} subjectId={subject_id} />
+
 				<button
 					className={styles.button}
 					onClick={() => {

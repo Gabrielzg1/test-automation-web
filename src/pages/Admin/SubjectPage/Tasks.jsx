@@ -9,7 +9,7 @@ const Tasks = ({ tasks_, subjectId }) => {
 			<h2 className={styles.title}>Tasks: </h2>
 			<ul>
 				{tasks_.map((task) => (
-					<li key={task._id}>
+					<li className={styles.li} key={task._id}>
 						<button
 							className={styles.item}
 							onClick={() => {
