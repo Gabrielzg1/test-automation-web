@@ -45,7 +45,7 @@ const UserLoginPage = () => {
 				</div>
 			</nav>
 			<div className={styles.login}>
-				<h1 className={styles.title}>Login</h1>
+				<h1 className={styles.title}>User</h1>
 				<div className={styles.form}>
 					<div className={styles.field}>
 						<input
