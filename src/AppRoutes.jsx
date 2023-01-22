@@ -48,7 +48,7 @@ const AppRoutes = () => {
 		return children;
 	};
 	return (
-		<Router>
+		<Router >
 			<AuthProvider>
 				<AuthProviderUser>
 					<Routes>
