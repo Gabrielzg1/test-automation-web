@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/test-automation-web/static/css/main.5fa16c4c.css",
+    "main.js": "/test-automation-web/static/js/main.16e94907.js",
+    "static/js/787.9caef287.chunk.js": "/test-automation-web/static/js/787.9caef287.chunk.js",
+    "static/media/logo.svg": "/test-automation-web/static/media/logo.55d1d6df6cc1f7251a9427a3049a7961.svg",
+    "static/media/layered-waves-haikei.svg": "/test-automation-web/static/media/layered-waves-haikei.af432f4c1be78fd5035d.svg",
+    "static/media/stacked-waves-haikei.svg": "/test-automation-web/static/media/stacked-waves-haikei.8b72695fce79b6b32fc5.svg",
+    "static/media/img.svg": "/test-automation-web/static/media/img.19a7b9c2273edf642e4d.svg",
+    "static/media/img2.svg": "/test-automation-web/static/media/img2.d39aebd7a2b4e9388c4e.svg",
+    "index.html": "/test-automation-web/index.html",
+    "static/media/img1.svg": "/test-automation-web/static/media/img1.1ac464c96679baa9b121.svg",
+    "main.5fa16c4c.css.map": "/test-automation-web/static/css/main.5fa16c4c.css.map",
+    "main.16e94907.js.map": "/test-automation-web/static/js/main.16e94907.js.map",
+    "787.9caef287.chunk.js.map": "/test-automation-web/static/js/787.9caef287.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5fa16c4c.css",
+    "static/js/main.16e94907.js"
+  ]
+}
