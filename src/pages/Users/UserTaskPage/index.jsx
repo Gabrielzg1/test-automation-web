@@ -65,11 +65,16 @@ const UserTaskPage = () => {
 		}
 	};
 	const handleCreateResult = async () => {
-		if (!exist) await createResult(task_id, user.id);
-		setExist(true);
-		navigate("/user/result", {
-			state: { taskId: task_id, task_name, subject_id, subject_name },
-		});
+		try {
+			const result = await getUserResult(user.id, task_id);
+			console.log(result.data);
+			if (!result.data) await createResult(task_id, user.id);
+			navigate("/user/result", {
+				state: { taskId: task_id, task_name, subject_id, subject_name },
+			});
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	const back = () => {
