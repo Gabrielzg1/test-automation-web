@@ -57,6 +57,7 @@ const UserTaskPage = () => {
 			formData.append("file", file);
 			const response = await createUserFolder(subject_id, task_id, user.id);
 			sendUserFile(formData);
+			//pre executar o arquivo para funcionar
 			setStatus(response.status);
 			setExist(true);
 		} catch (error) {
@@ -67,7 +68,7 @@ const UserTaskPage = () => {
 	const handleCreateResult = async () => {
 		try {
 			const result = await getUserResult(user.id, task_id);
-			console.log(result.data);
+			//console.log(result.data);
 			if (!result.data) await createResult(task_id, user.id);
 			navigate("/user/result", {
 				state: { taskId: task_id, task_name, subject_id, subject_name },
