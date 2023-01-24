@@ -20,7 +20,7 @@ const UserResultPage = () => {
 	const [result, setResult] = useState();
 
 	const back = () => {
-		//deleteResult(taskId, user.id);
+		deleteResult(taskId, user.id);
 		navigate("/user/subject/task", {
 			state: {
 				task_id: taskId,
