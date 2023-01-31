@@ -1,8 +1,8 @@
 import axios from "axios";
 
 export const api = axios.create({
-	//baseURL: "http://localhost:2020"
-	baseURL: "https://test-automation-server.onrender.com",
+	baseURL: "http://localhost:2020",
+	//baseURL: "https://test-automation-server.onrender.com",
 });
 
 export const createAdminSession = async (email, password) => {
