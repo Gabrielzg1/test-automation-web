@@ -7,7 +7,7 @@ const MainPage = () => {
 	return (
 		<div className={styles.body_mainpage}>
 			<div className={styles.background1_mainpage}>
-				<h1 id={styles.big_title_mainpage}>Nome Da Ferramenta.</h1>
+				<h1 id={styles.big_title_mainpage}>Gear Automation.</h1>
 			</div>
 
 			<div className={styles.background2_mainpage}>
