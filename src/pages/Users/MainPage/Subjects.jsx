@@ -19,9 +19,7 @@ const Subjects = ({ subjects_ }) => {
 							});
 						}}
 					>
-						<div className="info">
-							<div className="subject">{subject.name}</div>
-						</div>
+						{<div className="subject">{subject.name}</div>}
 					</button>
 				);
 			})}
