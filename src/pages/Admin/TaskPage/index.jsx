@@ -36,9 +36,12 @@ const AdminTaskPage = () => {
 	const handleTask = async () => {
 		try {
 			setLoading(true);
-			await getOutputs(subject_id, task_id);
-			await updateOutputs(subject_id, task_id);
+
 			const response = await getTask(subject_id, task_id);
+			if (response.data.outputs.length == 0) {
+				await getOutputs(subject_id, task_id);
+				await updateOutputs(subject_id, task_id);
+			}
 			setdescription(response.data.description);
 			setInputs(response.data.inputs);
 			setBaseCode(response.data.baseCode);
@@ -302,7 +305,9 @@ const AdminTaskPage = () => {
 				<div>
 					<button
 						onClick={() =>
-							navigate("/admin/task/result", { state: { taskId: task_id, subjectId: subject_id } })
+							navigate("/admin/task/result", {
+								state: { taskId: task_id, subjectId: subject_id },
+							})
 						}
 					>
 						Ver resultados

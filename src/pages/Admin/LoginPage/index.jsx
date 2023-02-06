@@ -40,7 +40,7 @@ const AdminLoginPage = () => {
 				<div className={styles.container}>
 					<h2 className={styles.Logo}>
 						<a href="/" className={styles.a}>
-							Nome Logo
+							Logo
 						</a>
 					</h2>
 				</div>

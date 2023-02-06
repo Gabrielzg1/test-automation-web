@@ -39,7 +39,7 @@ const UserLoginPage = () => {
 				<div className={styles.container}>
 					<h2 className={styles.Logo}>
 						<a className={styles.a} href="/">
-							Nome Logo
+							Logo
 						</a>
 					</h2>
 				</div>
