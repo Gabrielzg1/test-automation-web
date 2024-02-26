@@ -11,8 +11,6 @@ Este projeto foi construído utilizando as seguintes tecnologias e bibliotecas:
 - React.js: Biblioteca JavaScript para construção de interfaces de usuário
 - Axios: Cliente HTTP baseado em promessas para o navegador e node.js
 - React Router Dom: Biblioteca para roteamento dinâmico em aplicações React
-- Testing Library: Conjunto de ferramentas para testar componentes React de maneira mais eficiente
-- Web Vitals: Biblioteca para medir métricas de qualidade de sites (performance, acessibilidade, práticas recomendadas e SEO)
 
 ## Instalação
 
